@@ -1,6 +1,6 @@
 ﻿namespace Labyrinthe
 {
-    partial class UcStatistics
+    partial class UcInformation
     {
         /// <summary> 
         /// Required designer variable.
