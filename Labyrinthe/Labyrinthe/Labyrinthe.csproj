@@ -58,11 +58,11 @@
     <Compile Include="UcLabyrinthe.Designer.cs">
       <DependentUpon>UcLabyrinthe.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcInformation.cs">
+    <Compile Include="UcInformations.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcInformation.Designer.cs">
-      <DependentUpon>UcInformation.cs</DependentUpon>
+    <Compile Include="UcInformations.Designer.cs">
+      <DependentUpon>UcInformations.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormLabyrinthe.resx">
       <DependentUpon>FormLabyrinthe.cs</DependentUpon>
@@ -76,8 +76,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UcInformation.resx">
-      <DependentUpon>UcInformation.cs</DependentUpon>
+    <EmbeddedResource Include="UcInformations.resx">
+      <DependentUpon>UcInformations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UcLabyrinthe.resx">
       <DependentUpon>UcLabyrinthe.cs</DependentUpon>

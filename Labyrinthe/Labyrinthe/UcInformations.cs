@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Labyrinthe
 {
-    public partial class UcInformation : UserControl
+    public partial class UcInformations : UserControl
     {
-        public UcInformation()
+        public UcInformations()
         {
             InitializeComponent();
         }

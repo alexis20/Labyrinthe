@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.UcLabyrinthe = new Labyrinthe.UcLabyrinthe();
-            this.ucInformation1 = new Labyrinthe.UcInformation();
+            this.ucInformation1 = new Labyrinthe.UcInformations();
             this.SuspendLayout();
             // 
             // UcLabyrinthe
@@ -67,7 +67,7 @@
         #endregion
 
         private UcLabyrinthe UcLabyrinthe;
-        private UcInformation ucInformation1;
+        private UcInformations ucInformation1;
     }
 }
 
