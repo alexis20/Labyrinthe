@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Labyrinthe
 {
-    public partial class FormLabyrinthe : Form
+    public partial class FormLabyrinth : Form
     {
-        public FormLabyrinthe()
+        public FormLabyrinth()
         {
             InitializeComponent();
         }

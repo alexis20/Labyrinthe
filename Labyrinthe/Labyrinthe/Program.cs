@@ -16,7 +16,7 @@ namespace Labyrinthe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLabyrinthe());
+            Application.Run(new FormLabyrinth());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Labyrinthe
 {
-    partial class FormLabyrinthe
+    partial class FormLabyrinth
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.UcLabyrinthe = new Labyrinthe.UcLabyrinthe();
+            this.UcLabyrinthe = new Labyrinthe.UcLabyrinth();
             this.ucInformation1 = new Labyrinthe.UcInformations();
             this.SuspendLayout();
             // 
@@ -66,7 +66,7 @@
 
         #endregion
 
-        private UcLabyrinthe UcLabyrinthe;
+        private UcLabyrinth UcLabyrinthe;
         private UcInformations ucInformation1;
     }
 }

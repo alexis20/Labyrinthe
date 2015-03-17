@@ -44,19 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormLabyrinthe.cs">
+    <Compile Include="FormLabyrinth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLabyrinthe.Designer.cs">
-      <DependentUpon>FormLabyrinthe.cs</DependentUpon>
+    <Compile Include="FormLabyrinth.Designer.cs">
+      <DependentUpon>FormLabyrinth.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UcLabyrinthe.cs">
+    <Compile Include="UcLabyrinth.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcLabyrinthe.Designer.cs">
-      <DependentUpon>UcLabyrinthe.cs</DependentUpon>
+    <Compile Include="UcLabyrinth.Designer.cs">
+      <DependentUpon>UcLabyrinth.cs</DependentUpon>
     </Compile>
     <Compile Include="UcInformations.cs">
       <SubType>UserControl</SubType>
@@ -64,8 +64,8 @@
     <Compile Include="UcInformations.Designer.cs">
       <DependentUpon>UcInformations.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormLabyrinthe.resx">
-      <DependentUpon>FormLabyrinthe.cs</DependentUpon>
+    <EmbeddedResource Include="FormLabyrinth.resx">
+      <DependentUpon>FormLabyrinth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -79,8 +79,8 @@
     <EmbeddedResource Include="UcInformations.resx">
       <DependentUpon>UcInformations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UcLabyrinthe.resx">
-      <DependentUpon>UcLabyrinthe.cs</DependentUpon>
+    <EmbeddedResource Include="UcLabyrinth.resx">
+      <DependentUpon>UcLabyrinth.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

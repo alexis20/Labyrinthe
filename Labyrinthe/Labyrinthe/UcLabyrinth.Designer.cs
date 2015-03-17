@@ -1,6 +1,6 @@
 ﻿namespace Labyrinthe
 {
-    partial class UcLabyrinthe
+    partial class UcLabyrinth
     {
         /// <summary> 
         /// Required designer variable.
