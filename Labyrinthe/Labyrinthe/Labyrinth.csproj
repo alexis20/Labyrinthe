@@ -50,6 +50,7 @@
     <Compile Include="FormLabyrinth.Designer.cs">
       <DependentUpon>FormLabyrinth.cs</DependentUpon>
     </Compile>
+    <Compile Include="LabyrinthGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UcLabyrinth.cs">
