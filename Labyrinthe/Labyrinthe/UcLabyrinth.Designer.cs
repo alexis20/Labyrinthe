@@ -34,20 +34,20 @@
             // 
             // PbLabyrinthe
             // 
-            this.PbLabyrinthe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PbLabyrinthe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PbLabyrinthe.Location = new System.Drawing.Point(0, 0);
             this.PbLabyrinthe.Name = "PbLabyrinthe";
             this.PbLabyrinthe.Size = new System.Drawing.Size(950, 700);
+            this.PbLabyrinthe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbLabyrinthe.TabIndex = 0;
             this.PbLabyrinthe.TabStop = false;
             // 
-            // UcLabyrinthe
+            // UcLabyrinth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PbLabyrinthe);
-            this.Name = "UcLabyrinthe";
+            this.Name = "UcLabyrinth";
             this.Size = new System.Drawing.Size(950, 700);
             ((System.ComponentModel.ISupportInitialize)(this.PbLabyrinthe)).EndInit();
             this.ResumeLayout(false);

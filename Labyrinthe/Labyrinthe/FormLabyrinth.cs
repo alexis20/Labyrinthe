@@ -15,6 +15,8 @@ namespace Labyrinthe
         public FormLabyrinth()
         {
             InitializeComponent();
+
+            UcLabyrinth.Display();
         }
     }
 }

@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.UcLabyrinthe = new Labyrinthe.UcLabyrinth();
+            this.UcLabyrinth = new Labyrinthe.UcLabyrinth();
             this.ucInformation1 = new Labyrinthe.UcInformations();
             this.SuspendLayout();
             // 
-            // UcLabyrinthe
+            // UcLabyrinth
             // 
-            this.UcLabyrinthe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UcLabyrinthe.Location = new System.Drawing.Point(10, 10);
-            this.UcLabyrinthe.Name = "UcLabyrinthe";
-            this.UcLabyrinthe.Size = new System.Drawing.Size(1114, 527);
-            this.UcLabyrinthe.TabIndex = 0;
+            this.UcLabyrinth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UcLabyrinth.Location = new System.Drawing.Point(10, 10);
+            this.UcLabyrinth.Name = "UcLabyrinth";
+            this.UcLabyrinth.Size = new System.Drawing.Size(1114, 527);
+            this.UcLabyrinth.TabIndex = 0;
             // 
             // ucInformation1
             // 
@@ -48,15 +48,15 @@
             this.ucInformation1.Size = new System.Drawing.Size(1114, 115);
             this.ucInformation1.TabIndex = 1;
             // 
-            // FormLabyrinthe
+            // FormLabyrinth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 662);
-            this.Controls.Add(this.UcLabyrinthe);
+            this.Controls.Add(this.UcLabyrinth);
             this.Controls.Add(this.ucInformation1);
             this.MinimumSize = new System.Drawing.Size(1150, 700);
-            this.Name = "FormLabyrinthe";
+            this.Name = "FormLabyrinth";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "Le Labyrinthe";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -66,7 +66,7 @@
 
         #endregion
 
-        private UcLabyrinth UcLabyrinthe;
+        private UcLabyrinth UcLabyrinth;
         private UcInformations ucInformation1;
     }
 }
