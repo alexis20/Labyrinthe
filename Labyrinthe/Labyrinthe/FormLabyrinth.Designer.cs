@@ -58,7 +58,7 @@
             this.MinimumSize = new System.Drawing.Size(1150, 700);
             this.Name = "FormLabyrinth";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Text = "Le Labyrinthe";
+            this.Text = "The Labyrinth";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
