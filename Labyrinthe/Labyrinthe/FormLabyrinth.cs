@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Labyrinthe
+namespace Labyrinth
 {
 	public partial class FormLabyrinth : Form
 	{
@@ -18,13 +18,13 @@ namespace Labyrinthe
 		{
 			InitializeComponent();
 
-			labyrinth = new LabyrinthGenerator(UcLabyrinth.Width / 10, UcLabyrinth.Height / 9, TileSize);
+			labyrinth = new LabyrinthGenerator(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20, TileSize);
 			UcLabyrinth.Display(labyrinth.DisplayLabyrinth());
 		}
 
 		#endregion
 
-		#region Events
+		#region Event
 
 		private void UcLabyrinth_KeyPress(object sender, KeyPressEventArgs e)
 		{

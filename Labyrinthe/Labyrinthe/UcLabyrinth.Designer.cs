@@ -1,4 +1,4 @@
-﻿namespace Labyrinthe
+﻿namespace Labyrinth
 {
     partial class UcLabyrinth
     {

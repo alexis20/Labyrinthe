@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Labyrinthe
+namespace Labyrinth
 {
 	public partial class UcLabyrinth : UserControl
 	{

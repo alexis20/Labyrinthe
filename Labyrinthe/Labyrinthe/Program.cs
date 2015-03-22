@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Labyrinthe
+namespace Labyrinth
 {
     static class Program
     {

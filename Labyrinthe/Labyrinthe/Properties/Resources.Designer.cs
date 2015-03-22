@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Labyrinthe.Properties
+namespace Labyrinth.Properties
 {
 
 
