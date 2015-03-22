@@ -10,13 +10,26 @@ using System.Windows.Forms;
 
 namespace Labyrinthe
 {
-    public partial class FormLabyrinth : Form
-    {
-        public FormLabyrinth()
-        {
-            InitializeComponent();
+	public partial class FormLabyrinth : Form
+	{
+		#region Constructor
 
-            UcLabyrinth.Display();
-        }
-    }
+		public FormLabyrinth()
+		{
+			InitializeComponent();
+
+			UcLabyrinth.Display();
+		}
+
+		#endregion
+
+		#region Events
+
+		private void UcLabyrinth_KeyPress(object sender, KeyPressEventArgs e)
+		{
+
+		}
+
+		#endregion
+	}
 }
