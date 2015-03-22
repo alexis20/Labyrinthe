@@ -5,11 +5,6 @@ namespace Labyrinth
 {
 	public partial class UcLabyrinth : UserControl
 	{
-		#region Properties
-
-		Bitmap image = null;
-
-		#endregion
 
 		#region Constructor
 
@@ -22,10 +17,10 @@ namespace Labyrinth
 
 		#region Methods
 
-		public void Display(Bitmap pImage)
+		public void Display(LabyrinthGenerator pLabyrinth)
 		{
-			image = pImage;
-			PbLabyrinth.Image = pImage;
+			PbLabyrinth.Image = pLabyrinth.DisplayLabyrinth();
+			Focus();
 		}
 
 		#endregion
