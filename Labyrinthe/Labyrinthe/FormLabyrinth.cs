@@ -5,9 +5,8 @@ namespace Labyrinth
 {
 	public partial class FormLabyrinth : Form
 	{
-		#region Variables
+		#region Variable
 
-		private const int TileSize = 15;
 		LabyrinthGenerator labyrinth = null;
 
 		#endregion
@@ -18,7 +17,7 @@ namespace Labyrinth
 		{
 			InitializeComponent();
 
-			labyrinth = new LabyrinthGenerator(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20, TileSize);
+			labyrinth = new LabyrinthGenerator(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20);
 			UcLabyrinth.Display(labyrinth.DisplayLabyrinth());
 		}
 
