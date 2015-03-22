@@ -7,7 +7,7 @@ namespace Labyrinth
 	{
 		#region Variables
 
-		private LabyrinthGenerator labyrinth = null;
+		private LabyrinthManager labyrinth = null;
 
 		#endregion
 
@@ -24,7 +24,7 @@ namespace Labyrinth
 
 		public void Display()
 		{
-			labyrinth = new LabyrinthGenerator(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20);
+			labyrinth = new LabyrinthManager(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20);
 
 			UcGestionInformation.Display(labyrinth);
 		}
@@ -41,7 +41,7 @@ namespace Labyrinth
 
 		private void UcGestionInformation_Restart(object sender, System.EventArgs e)
 		{
-			labyrinth = new LabyrinthGenerator(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20);
+			labyrinth = new LabyrinthManager(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20);
 			UcLabyrinth.Display(labyrinth);
         }
 

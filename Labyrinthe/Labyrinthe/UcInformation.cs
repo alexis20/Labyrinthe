@@ -15,7 +15,7 @@ namespace Labyrinth
 
 		#region Methods
 
-		public void Display(LabyrinthGenerator pLabyrinth)
+		public void Display(LabyrinthManager pLabyrinth)
 		{
 
 		}

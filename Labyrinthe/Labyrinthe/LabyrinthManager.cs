@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-	public class LabyrinthGenerator
+	public class LabyrinthManager
 	{
 		#region Variables
 
@@ -64,7 +64,7 @@ namespace Labyrinth
 		/// </summary>
 		/// <param name="pWidth">The number of tiles across in the mazes to generate. Must include the two extra tiles for a wall in both sides.</param>
 		/// <param name="pHeight">The number of tiles from top to bottom in the mazes to generate. Must include the two ekstra tiles for a wall both at top and bottom.</param>
-		public LabyrinthGenerator(int pWidth, int pHeight) : this(pWidth, pHeight, new Point(1, 1)) { }
+		public LabyrinthManager(int pWidth, int pHeight) : this(pWidth, pHeight, new Point(1, 1)) { }
 
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace Labyrinth
 		/// <param name="pWidth">The number of tiles across in the mazes to generate. Must include the two ekstra tiles for a wall in both sides.</param>
 		/// <param name="pHeight">The number of tiles from top to bottom in the mazes to generate. Must include the two ekstra tiles for a wall both at top and bottom.</param>
 		/// <param name="pStartingPosition">The player's starting position.</param>
-		public LabyrinthGenerator(int pWidth, int pHeight, Point pStartingPosition)
+		public LabyrinthManager(int pWidth, int pHeight, Point pStartingPosition)
 		{
 			Width = pWidth;
 			Height = pHeight;
