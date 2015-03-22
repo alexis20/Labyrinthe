@@ -1,6 +1,6 @@
 ﻿namespace Labyrinth
 {
-    partial class UcInformations
+    partial class UcInformation
     {
         /// <summary> 
         /// Required designer variable.
@@ -286,13 +286,13 @@
 			this.FlpTop.Size = new System.Drawing.Size(1200, 20);
 			this.FlpTop.TabIndex = 1;
 			// 
-			// UcInformations
+			// UcInformation
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.TlpMain);
 			this.Controls.Add(this.FlpTop);
-			this.Name = "UcInformations";
+			this.Name = "UcInformation";
 			this.Size = new System.Drawing.Size(1200, 115);
 			this.TlpMain.ResumeLayout(false);
 			this.TlpMain.PerformLayout();

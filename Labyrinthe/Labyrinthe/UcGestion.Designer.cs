@@ -39,7 +39,7 @@
 			this.UcLabyrinth.Name = "UcLabyrinth";
 			this.UcLabyrinth.Size = new System.Drawing.Size(1326, 635);
 			this.UcLabyrinth.TabIndex = 1;
-			this.UcLabyrinth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UcLabyrinth_KeyPress);
+			this.UcLabyrinth.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UcLabyrinth_KeyUp);
 			// 
 			// UcGestionInformation
 			// 

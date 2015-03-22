@@ -41,23 +41,24 @@ namespace Labyrinth
 
 		private void UcGestionInformation_Restart(object sender, System.EventArgs e)
 		{
-			labyrinth = new LabyrinthManager(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20);
+			Display();
 			UcLabyrinth.Display(labyrinth);
         }
 
 
-		private void UcLabyrinth_KeyPress(object sender, KeyPressEventArgs e)
+		private void UcLabyrinth_KeyUp(object sender, KeyEventArgs e)
 		{
-			if (e.KeyChar.Equals('w'))
+			if (e.KeyCode == Keys.W)
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X, labyrinth.CurrentTile.Y + 1));
-			else if (e.KeyChar.Equals('a'))
+			else if (e.KeyCode == Keys.A)
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X - 1, labyrinth.CurrentTile.Y));
-			else if (e.KeyChar.Equals('s'))
+			else if (e.KeyCode == Keys.S)
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X, labyrinth.CurrentTile.Y - 1));
-			else if (e.KeyChar.Equals('d'))
+			else if (e.KeyCode == Keys.D)
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X + 1, labyrinth.CurrentTile.Y));
 
 			UcLabyrinth.Display(labyrinth);
+			UcGestionInformation.Display(labyrinth);
 		}
 
 		#endregion

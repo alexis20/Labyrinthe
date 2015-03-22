@@ -25,7 +25,7 @@ namespace Labyrinth
 
 		public void Display(LabyrinthManager pLabyrinth)
 		{
-
+			UcInformation.Display(pLabyrinth);
 		}
 
 		#endregion

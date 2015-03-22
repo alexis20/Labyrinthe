@@ -32,7 +32,7 @@
 			this.BtnStart = new System.Windows.Forms.Button();
 			this.BtnRestart = new System.Windows.Forms.Button();
 			this.BtnExit = new System.Windows.Forms.Button();
-			this.UcInformation = new Labyrinth.UcInformations();
+			this.UcInformation = new Labyrinth.UcInformation();
 			this.TlpButtons.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -114,7 +114,7 @@
 
 		#endregion
 
-		private Labyrinth.UcInformations UcInformation;
+		private Labyrinth.UcInformation UcInformation;
 		private System.Windows.Forms.TableLayoutPanel TlpButtons;
 		private System.Windows.Forms.Button BtnStart;
 		private System.Windows.Forms.Button BtnRestart;

@@ -13,11 +13,11 @@ namespace Labyrinth
 
 		private static Random rnd = new Random();
 
-		private bool hasBeenDisplayed = false;	
+		private bool hasBeenDisplayed = false;
 		private int _longestPathSoFar;
 		private int _width, _height;
 		private Point _currentTile;
-		private List<char[]> _indexes;
+		private List<char[]> _bonuses;
 
 		/// <summary>
 		/// The stack of points no tested yet
@@ -36,6 +36,12 @@ namespace Labyrinth
 		public byte[,] Labyrinth { get; private set; }
 
 		public Point FurthestPoint { get; private set; }
+
+		public int StepsRemaining { get; private set; }
+
+		public int BonusStepsRemaining { get; private set; }
+
+		public int BonusTorchRemaining { get; private set; }
 
 		public int Width
 		{
@@ -77,9 +83,12 @@ namespace Labyrinth
 		{
 			Width = pWidth;
 			Height = pHeight;
-			hasBeenDisplayed = false;
+			StepsRemaining = 500;
+			BonusStepsRemaining = 0;
+			BonusTorchRemaining = 0;
 
-			_indexes = new List<char[]>();
+			hasBeenDisplayed = false;
+			_bonuses = new List<char[]>();
 			Labyrinth = new byte[Width, Height];
 
 			// Initialize all fields as taken
@@ -203,17 +212,22 @@ namespace Labyrinth
 
 			if (hasBeenDisplayed)
 			{
-				for (int i = _indexes.Count - 1; i >= 0; --i)
+				for (int i = _bonuses.Count - 1; i >= 0; --i)
 				{
-					char[] index = _indexes[i];
-					if (sb[index[0]].Equals(' '))
-						sb[index[0]] = index[1];
-					if (sb[index[0]].Equals('O'))	// I've gone through the bonus, it needs to disappear
+					char[] bonus = _bonuses[i];
+					if (sb[bonus[0]].Equals(' '))
+						sb[bonus[0]] = bonus[1];
+					if (sb[bonus[0]].Equals('O'))	// I've gone through the bonus, make it disappear
 					{
 						char[] newTab = new char[2];
-						newTab[0] = index[0];
+						newTab[0] = bonus[0];
 						newTab[1] = ' ';
-						_indexes[_indexes.IndexOf(index)] = newTab;
+						_bonuses[_bonuses.IndexOf(bonus)] = newTab;
+
+						if (bonus[1].Equals('_'))
+							BonusTorchRemaining += 20;
+						else if (bonus[1].Equals('.'))
+							BonusStepsRemaining += 20;
 					}
 				}
 			}
@@ -230,7 +244,26 @@ namespace Labyrinth
 		public void MovePlayer(Point pNewPosition)
 		{
 			if (IsInside(pNewPosition) && IsOnPath(pNewPosition))
+			{
 				CurrentTile = pNewPosition;
+				if (BonusStepsRemaining > 0)
+					--BonusStepsRemaining;
+				else if (!GameOver())
+					--StepsRemaining;
+				if (BonusTorchRemaining > 0)
+					--BonusTorchRemaining;
+
+				if (GameOver())
+				{
+
+				}
+			}
+		}
+
+
+		private bool GameOver()
+		{
+			return StepsRemaining == 0;
 		}
 
 
@@ -242,7 +275,7 @@ namespace Labyrinth
 				sb[index] = c;
 			tab[0] = (char)index;
 			tab[1] = c;
-			_indexes.Add(tab);
+			_bonuses.Add(tab);
 		}
 
 

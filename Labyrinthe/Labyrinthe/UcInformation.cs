@@ -2,11 +2,11 @@
 
 namespace Labyrinth
 {
-	public partial class UcInformations : UserControl
+	public partial class UcInformation : UserControl
 	{
 		#region Constructor
 
-		public UcInformations()
+		public UcInformation()
 		{
 			InitializeComponent();
 		}
@@ -17,9 +17,11 @@ namespace Labyrinth
 
 		public void Display(LabyrinthManager pLabyrinth)
 		{
-
+			TxtStepsRemaining.Text = pLabyrinth.StepsRemaining.ToString();
+			TxtBonusStepsRemaining.Text = pLabyrinth.BonusStepsRemaining.ToString();
+			TxtBonusTorchRemaining.Text = pLabyrinth.BonusTorchRemaining.ToString();
 		}
-
+		 
 		#endregion
 	}
 }
