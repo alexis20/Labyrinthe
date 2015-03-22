@@ -29,15 +29,26 @@
         private void InitializeComponent()
         {
 			this.UcLabyrinth = new Labyrinth.UcLabyrinth();
+			this.UcGestion = new Labyrinthe.UcGestion();
 			this.SuspendLayout();
 			// 
 			// UcLabyrinth
 			// 
+			this.UcLabyrinth.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.UcLabyrinth.Location = new System.Drawing.Point(10, 10);
 			this.UcLabyrinth.Name = "UcLabyrinth";
 			this.UcLabyrinth.Size = new System.Drawing.Size(1464, 827);
 			this.UcLabyrinth.TabIndex = 0;
 			this.UcLabyrinth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UcLabyrinth_KeyPress);
+			// 
+			// UcGestion
+			// 
+			this.UcGestion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.UcGestion.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.UcGestion.Location = new System.Drawing.Point(10, 837);
+			this.UcGestion.Name = "UcGestion";
+			this.UcGestion.Size = new System.Drawing.Size(1464, 115);
+			this.UcGestion.TabIndex = 1;
 			// 
 			// FormLabyrinth
 			// 
@@ -45,6 +56,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1484, 962);
 			this.Controls.Add(this.UcLabyrinth);
+			this.Controls.Add(this.UcGestion);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -60,6 +72,7 @@
         #endregion
 
         private UcLabyrinth UcLabyrinth;
-    }
+		private Labyrinthe.UcGestion UcGestion;
+	}
 }
 

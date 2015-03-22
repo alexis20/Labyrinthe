@@ -10,11 +10,26 @@ using System.Windows.Forms;
 
 namespace Labyrinth
 {
-    public partial class UcInformations : UserControl
-    {
-        public UcInformations()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class UcInformations : UserControl
+	{
+		#region Constructor
+
+		public UcInformations()
+		{
+			InitializeComponent();
+		}
+
+		#endregion
+
+		#region Events
+
+		private void ChangeColor(object sender, EventArgs a)
+		{
+			PictureBox pb = (PictureBox)sender;
+			if (CdChangeColors.ShowDialog() == DialogResult.OK)
+				pb.BackColor = CdChangeColors.Color;
+		}
+
+		#endregion
+	}
 }

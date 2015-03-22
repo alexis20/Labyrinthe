@@ -29,24 +29,38 @@
         private void InitializeComponent()
         {
 			this.TlpMain = new System.Windows.Forms.TableLayoutPanel();
-			this.LblStepsRemaining = new System.Windows.Forms.Label();
-			this.LblBonusStepsRemaining = new System.Windows.Forms.Label();
-			this.LblTitle = new System.Windows.Forms.Label();
-			this.FlpTop = new System.Windows.Forms.FlowLayoutPanel();
 			this.LblBonusTorchRemaining = new System.Windows.Forms.Label();
+			this.LblBonusStepsRemaining = new System.Windows.Forms.Label();
+			this.LblStepsRemaining = new System.Windows.Forms.Label();
 			this.PnlLegend = new System.Windows.Forms.Panel();
+			this.LblPlayer = new System.Windows.Forms.Label();
+			this.PbPlayer = new System.Windows.Forms.PictureBox();
 			this.TxtStepsRemaining = new System.Windows.Forms.Label();
 			this.TxtBonusStepsRemaining = new System.Windows.Forms.Label();
 			this.TxtBonusTorchRemaining = new System.Windows.Forms.Label();
+			this.LblTitle = new System.Windows.Forms.Label();
+			this.FlpTop = new System.Windows.Forms.FlowLayoutPanel();
+			this.CdChangeColors = new System.Windows.Forms.ColorDialog();
+			this.LblExit = new System.Windows.Forms.Label();
+			this.PbExit = new System.Windows.Forms.PictureBox();
+			this.LblBonusSteps = new System.Windows.Forms.Label();
+			this.PbBonusSteps = new System.Windows.Forms.PictureBox();
+			this.LblBonusTorch = new System.Windows.Forms.Label();
+			this.PbBonusTorch = new System.Windows.Forms.PictureBox();
 			this.TlpMain.SuspendLayout();
+			this.PnlLegend.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbPlayer)).BeginInit();
 			this.FlpTop.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbExit)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PbBonusSteps)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PbBonusTorch)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// TlpMain
 			// 
 			this.TlpMain.ColumnCount = 2;
-			this.TlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.79884F));
-			this.TlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.20116F));
+			this.TlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+			this.TlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.TlpMain.Controls.Add(this.LblBonusTorchRemaining, 0, 3);
 			this.TlpMain.Controls.Add(this.LblBonusStepsRemaining, 0, 2);
 			this.TlpMain.Controls.Add(this.LblStepsRemaining, 0, 1);
@@ -63,8 +77,30 @@
 			this.TlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
 			this.TlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
 			this.TlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TlpMain.Size = new System.Drawing.Size(1034, 176);
+			this.TlpMain.Size = new System.Drawing.Size(1200, 95);
 			this.TlpMain.TabIndex = 0;
+			// 
+			// LblBonusTorchRemaining
+			// 
+			this.LblBonusTorchRemaining.AutoSize = true;
+			this.LblBonusTorchRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.LblBonusTorchRemaining.Location = new System.Drawing.Point(3, 66);
+			this.LblBonusTorchRemaining.Name = "LblBonusTorchRemaining";
+			this.LblBonusTorchRemaining.Size = new System.Drawing.Size(116, 29);
+			this.LblBonusTorchRemaining.TabIndex = 3;
+			this.LblBonusTorchRemaining.Text = "Bonus torch remaining:";
+			this.LblBonusTorchRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// LblBonusStepsRemaining
+			// 
+			this.LblBonusStepsRemaining.AutoSize = true;
+			this.LblBonusStepsRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.LblBonusStepsRemaining.Location = new System.Drawing.Point(3, 44);
+			this.LblBonusStepsRemaining.Name = "LblBonusStepsRemaining";
+			this.LblBonusStepsRemaining.Size = new System.Drawing.Size(116, 22);
+			this.LblBonusStepsRemaining.TabIndex = 1;
+			this.LblBonusStepsRemaining.Text = "Bonus steps remaining:";
+			this.LblBonusStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// LblStepsRemaining
 			// 
@@ -77,16 +113,83 @@
 			this.LblStepsRemaining.Text = "Steps remaining:";
 			this.LblStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// LblBonusStepsRemaining
+			// PnlLegend
 			// 
-			this.LblBonusStepsRemaining.AutoSize = true;
-			this.LblBonusStepsRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.LblBonusStepsRemaining.Location = new System.Drawing.Point(3, 44);
-			this.LblBonusStepsRemaining.Name = "LblBonusStepsRemaining";
-			this.LblBonusStepsRemaining.Size = new System.Drawing.Size(116, 22);
-			this.LblBonusStepsRemaining.TabIndex = 1;
-			this.LblBonusStepsRemaining.Text = "Bonus steps remaining:";
-			this.LblBonusStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.TlpMain.SetColumnSpan(this.PnlLegend, 2);
+			this.PnlLegend.Controls.Add(this.LblBonusTorch);
+			this.PnlLegend.Controls.Add(this.PbBonusTorch);
+			this.PnlLegend.Controls.Add(this.LblBonusSteps);
+			this.PnlLegend.Controls.Add(this.PbBonusSteps);
+			this.PnlLegend.Controls.Add(this.LblExit);
+			this.PnlLegend.Controls.Add(this.PbExit);
+			this.PnlLegend.Controls.Add(this.LblPlayer);
+			this.PnlLegend.Controls.Add(this.PbPlayer);
+			this.PnlLegend.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PnlLegend.Location = new System.Drawing.Point(0, 0);
+			this.PnlLegend.Margin = new System.Windows.Forms.Padding(0);
+			this.PnlLegend.Name = "PnlLegend";
+			this.PnlLegend.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+			this.PnlLegend.Size = new System.Drawing.Size(1200, 22);
+			this.PnlLegend.TabIndex = 4;
+			// 
+			// LblPlayer
+			// 
+			this.LblPlayer.AutoSize = true;
+			this.LblPlayer.Dock = System.Windows.Forms.DockStyle.Left;
+			this.LblPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblPlayer.Location = new System.Drawing.Point(27, 0);
+			this.LblPlayer.Name = "LblPlayer";
+			this.LblPlayer.Padding = new System.Windows.Forms.Padding(0, 3, 15, 0);
+			this.LblPlayer.Size = new System.Drawing.Size(57, 16);
+			this.LblPlayer.TabIndex = 1;
+			this.LblPlayer.Text = "Player";
+			this.LblPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// PbPlayer
+			// 
+			this.PbPlayer.BackColor = System.Drawing.Color.Red;
+			this.PbPlayer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PbPlayer.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbPlayer.Dock = System.Windows.Forms.DockStyle.Left;
+			this.PbPlayer.Location = new System.Drawing.Point(5, 0);
+			this.PbPlayer.Name = "PbPlayer";
+			this.PbPlayer.Size = new System.Drawing.Size(22, 22);
+			this.PbPlayer.TabIndex = 0;
+			this.PbPlayer.TabStop = false;
+			this.PbPlayer.Click += new System.EventHandler(this.ChangeColor);
+			// 
+			// TxtStepsRemaining
+			// 
+			this.TxtStepsRemaining.AutoSize = true;
+			this.TxtStepsRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TxtStepsRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TxtStepsRemaining.Location = new System.Drawing.Point(125, 22);
+			this.TxtStepsRemaining.Name = "TxtStepsRemaining";
+			this.TxtStepsRemaining.Size = new System.Drawing.Size(1072, 22);
+			this.TxtStepsRemaining.TabIndex = 5;
+			this.TxtStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// TxtBonusStepsRemaining
+			// 
+			this.TxtBonusStepsRemaining.AutoSize = true;
+			this.TxtBonusStepsRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TxtBonusStepsRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TxtBonusStepsRemaining.Location = new System.Drawing.Point(125, 44);
+			this.TxtBonusStepsRemaining.Name = "TxtBonusStepsRemaining";
+			this.TxtBonusStepsRemaining.Size = new System.Drawing.Size(1072, 22);
+			this.TxtBonusStepsRemaining.TabIndex = 6;
+			this.TxtBonusStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// TxtBonusTorchRemaining
+			// 
+			this.TxtBonusTorchRemaining.AutoSize = true;
+			this.TxtBonusTorchRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TxtBonusTorchRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TxtBonusTorchRemaining.Location = new System.Drawing.Point(125, 66);
+			this.TxtBonusTorchRemaining.Name = "TxtBonusTorchRemaining";
+			this.TxtBonusTorchRemaining.Size = new System.Drawing.Size(1072, 29);
+			this.TxtBonusTorchRemaining.TabIndex = 7;
+			this.TxtBonusTorchRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// LblTitle
 			// 
@@ -107,62 +210,91 @@
 			this.FlpTop.Location = new System.Drawing.Point(0, 0);
 			this.FlpTop.Margin = new System.Windows.Forms.Padding(0);
 			this.FlpTop.Name = "FlpTop";
-			this.FlpTop.Size = new System.Drawing.Size(1034, 20);
+			this.FlpTop.Size = new System.Drawing.Size(1200, 20);
 			this.FlpTop.TabIndex = 1;
 			// 
-			// LblBonusTorchRemaining
+			// CdChangeColors
 			// 
-			this.LblBonusTorchRemaining.AutoSize = true;
-			this.LblBonusTorchRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.LblBonusTorchRemaining.Location = new System.Drawing.Point(3, 66);
-			this.LblBonusTorchRemaining.Name = "LblBonusTorchRemaining";
-			this.LblBonusTorchRemaining.Size = new System.Drawing.Size(116, 110);
-			this.LblBonusTorchRemaining.TabIndex = 3;
-			this.LblBonusTorchRemaining.Text = "Bonus torch remaining:";
-			this.LblBonusTorchRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.CdChangeColors.AnyColor = true;
+			this.CdChangeColors.FullOpen = true;
 			// 
-			// PnlLegend
+			// LblExit
 			// 
-			this.TlpMain.SetColumnSpan(this.PnlLegend, 2);
-			this.PnlLegend.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PnlLegend.Location = new System.Drawing.Point(0, 0);
-			this.PnlLegend.Margin = new System.Windows.Forms.Padding(0);
-			this.PnlLegend.Name = "PnlLegend";
-			this.PnlLegend.Size = new System.Drawing.Size(1034, 22);
-			this.PnlLegend.TabIndex = 4;
+			this.LblExit.AutoSize = true;
+			this.LblExit.Dock = System.Windows.Forms.DockStyle.Left;
+			this.LblExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblExit.Location = new System.Drawing.Point(106, 0);
+			this.LblExit.Name = "LblExit";
+			this.LblExit.Padding = new System.Windows.Forms.Padding(0, 3, 15, 0);
+			this.LblExit.Size = new System.Drawing.Size(43, 16);
+			this.LblExit.TabIndex = 3;
+			this.LblExit.Text = "Exit";
+			this.LblExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// TxtStepsRemaining
+			// PbExit
 			// 
-			this.TxtStepsRemaining.AutoSize = true;
-			this.TxtStepsRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TxtStepsRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TxtStepsRemaining.Location = new System.Drawing.Point(125, 22);
-			this.TxtStepsRemaining.Name = "TxtStepsRemaining";
-			this.TxtStepsRemaining.Size = new System.Drawing.Size(906, 22);
-			this.TxtStepsRemaining.TabIndex = 5;
-			this.TxtStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.PbExit.BackColor = System.Drawing.Color.LightGreen;
+			this.PbExit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PbExit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbExit.Dock = System.Windows.Forms.DockStyle.Left;
+			this.PbExit.Location = new System.Drawing.Point(84, 0);
+			this.PbExit.Name = "PbExit";
+			this.PbExit.Size = new System.Drawing.Size(22, 22);
+			this.PbExit.TabIndex = 2;
+			this.PbExit.TabStop = false;
+			this.PbExit.Click += new System.EventHandler(this.ChangeColor);
 			// 
-			// TxtBonusStepsRemaining
+			// LblBonusSteps
 			// 
-			this.TxtBonusStepsRemaining.AutoSize = true;
-			this.TxtBonusStepsRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TxtBonusStepsRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TxtBonusStepsRemaining.Location = new System.Drawing.Point(125, 44);
-			this.TxtBonusStepsRemaining.Name = "TxtBonusStepsRemaining";
-			this.TxtBonusStepsRemaining.Size = new System.Drawing.Size(906, 22);
-			this.TxtBonusStepsRemaining.TabIndex = 6;
-			this.TxtBonusStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.LblBonusSteps.AutoSize = true;
+			this.LblBonusSteps.Dock = System.Windows.Forms.DockStyle.Left;
+			this.LblBonusSteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblBonusSteps.Location = new System.Drawing.Point(171, 0);
+			this.LblBonusSteps.Name = "LblBonusSteps";
+			this.LblBonusSteps.Padding = new System.Windows.Forms.Padding(0, 3, 15, 0);
+			this.LblBonusSteps.Size = new System.Drawing.Size(91, 16);
+			this.LblBonusSteps.TabIndex = 5;
+			this.LblBonusSteps.Text = "Bonus steps";
+			this.LblBonusSteps.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// TxtBonusTorchRemaining
+			// PbBonusSteps
 			// 
-			this.TxtBonusTorchRemaining.AutoSize = true;
-			this.TxtBonusTorchRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TxtBonusTorchRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TxtBonusTorchRemaining.Location = new System.Drawing.Point(125, 66);
-			this.TxtBonusTorchRemaining.Name = "TxtBonusTorchRemaining";
-			this.TxtBonusTorchRemaining.Size = new System.Drawing.Size(906, 110);
-			this.TxtBonusTorchRemaining.TabIndex = 7;
-			this.TxtBonusTorchRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.PbBonusSteps.BackColor = System.Drawing.Color.Red;
+			this.PbBonusSteps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PbBonusSteps.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbBonusSteps.Dock = System.Windows.Forms.DockStyle.Left;
+			this.PbBonusSteps.Location = new System.Drawing.Point(149, 0);
+			this.PbBonusSteps.Name = "PbBonusSteps";
+			this.PbBonusSteps.Size = new System.Drawing.Size(22, 22);
+			this.PbBonusSteps.TabIndex = 4;
+			this.PbBonusSteps.TabStop = false;
+			this.PbBonusSteps.Click += new System.EventHandler(this.ChangeColor);
+			// 
+			// LblBonusTorch
+			// 
+			this.LblBonusTorch.AutoSize = true;
+			this.LblBonusTorch.Dock = System.Windows.Forms.DockStyle.Left;
+			this.LblBonusTorch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblBonusTorch.Location = new System.Drawing.Point(284, 0);
+			this.LblBonusTorch.Name = "LblBonusTorch";
+			this.LblBonusTorch.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+			this.LblBonusTorch.Size = new System.Drawing.Size(75, 16);
+			this.LblBonusTorch.TabIndex = 7;
+			this.LblBonusTorch.Text = "Bonus torch";
+			this.LblBonusTorch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// PbBonusTorch
+			// 
+			this.PbBonusTorch.BackColor = System.Drawing.Color.Red;
+			this.PbBonusTorch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PbBonusTorch.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbBonusTorch.Dock = System.Windows.Forms.DockStyle.Left;
+			this.PbBonusTorch.Location = new System.Drawing.Point(262, 0);
+			this.PbBonusTorch.Name = "PbBonusTorch";
+			this.PbBonusTorch.Size = new System.Drawing.Size(22, 22);
+			this.PbBonusTorch.TabIndex = 6;
+			this.PbBonusTorch.TabStop = false;
+			this.PbBonusTorch.Click += new System.EventHandler(this.ChangeColor);
 			// 
 			// UcInformations
 			// 
@@ -171,11 +303,17 @@
 			this.Controls.Add(this.TlpMain);
 			this.Controls.Add(this.FlpTop);
 			this.Name = "UcInformations";
-			this.Size = new System.Drawing.Size(1034, 196);
+			this.Size = new System.Drawing.Size(1200, 115);
 			this.TlpMain.ResumeLayout(false);
 			this.TlpMain.PerformLayout();
+			this.PnlLegend.ResumeLayout(false);
+			this.PnlLegend.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbPlayer)).EndInit();
 			this.FlpTop.ResumeLayout(false);
 			this.FlpTop.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PbExit)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PbBonusSteps)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PbBonusTorch)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -192,5 +330,14 @@
 		private System.Windows.Forms.Label TxtStepsRemaining;
 		private System.Windows.Forms.Label TxtBonusStepsRemaining;
 		private System.Windows.Forms.Label TxtBonusTorchRemaining;
+		private System.Windows.Forms.ColorDialog CdChangeColors;
+		private System.Windows.Forms.PictureBox PbPlayer;
+		private System.Windows.Forms.Label LblPlayer;
+		private System.Windows.Forms.Label LblBonusTorch;
+		private System.Windows.Forms.PictureBox PbBonusTorch;
+		private System.Windows.Forms.Label LblBonusSteps;
+		private System.Windows.Forms.PictureBox PbBonusSteps;
+		private System.Windows.Forms.Label LblExit;
+		private System.Windows.Forms.PictureBox PbExit;
 	}
 }
