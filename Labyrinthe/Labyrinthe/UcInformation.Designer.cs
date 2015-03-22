@@ -46,7 +46,6 @@
 			this.TxtBonusTorchRemaining = new System.Windows.Forms.Label();
 			this.LblTitle = new System.Windows.Forms.Label();
 			this.FlpTop = new System.Windows.Forms.FlowLayoutPanel();
-			this.CdChangeColors = new System.Windows.Forms.ColorDialog();
 			this.TlpMain.SuspendLayout();
 			this.PnlLegend.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PbBonusTorch)).BeginInit();
@@ -149,14 +148,13 @@
 			// 
 			this.PbBonusTorch.BackColor = System.Drawing.Color.Gold;
 			this.PbBonusTorch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.PbBonusTorch.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbBonusTorch.Cursor = System.Windows.Forms.Cursors.Default;
 			this.PbBonusTorch.Dock = System.Windows.Forms.DockStyle.Left;
 			this.PbBonusTorch.Location = new System.Drawing.Point(262, 0);
 			this.PbBonusTorch.Name = "PbBonusTorch";
 			this.PbBonusTorch.Size = new System.Drawing.Size(22, 22);
 			this.PbBonusTorch.TabIndex = 6;
 			this.PbBonusTorch.TabStop = false;
-			this.PbBonusTorch.Click += new System.EventHandler(this.ChangeColor);
 			// 
 			// LblBonusSteps
 			// 
@@ -175,14 +173,13 @@
 			// 
 			this.PbBonusSteps.BackColor = System.Drawing.Color.CornflowerBlue;
 			this.PbBonusSteps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.PbBonusSteps.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbBonusSteps.Cursor = System.Windows.Forms.Cursors.Default;
 			this.PbBonusSteps.Dock = System.Windows.Forms.DockStyle.Left;
 			this.PbBonusSteps.Location = new System.Drawing.Point(149, 0);
 			this.PbBonusSteps.Name = "PbBonusSteps";
 			this.PbBonusSteps.Size = new System.Drawing.Size(22, 22);
 			this.PbBonusSteps.TabIndex = 4;
 			this.PbBonusSteps.TabStop = false;
-			this.PbBonusSteps.Click += new System.EventHandler(this.ChangeColor);
 			// 
 			// LblExit
 			// 
@@ -201,14 +198,13 @@
 			// 
 			this.PbExit.BackColor = System.Drawing.Color.LightGreen;
 			this.PbExit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.PbExit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbExit.Cursor = System.Windows.Forms.Cursors.Default;
 			this.PbExit.Dock = System.Windows.Forms.DockStyle.Left;
 			this.PbExit.Location = new System.Drawing.Point(84, 0);
 			this.PbExit.Name = "PbExit";
 			this.PbExit.Size = new System.Drawing.Size(22, 22);
 			this.PbExit.TabIndex = 2;
 			this.PbExit.TabStop = false;
-			this.PbExit.Click += new System.EventHandler(this.ChangeColor);
 			// 
 			// LblPlayer
 			// 
@@ -227,14 +223,13 @@
 			// 
 			this.PbPlayer.BackColor = System.Drawing.Color.Red;
 			this.PbPlayer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.PbPlayer.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PbPlayer.Cursor = System.Windows.Forms.Cursors.Default;
 			this.PbPlayer.Dock = System.Windows.Forms.DockStyle.Left;
 			this.PbPlayer.Location = new System.Drawing.Point(5, 0);
 			this.PbPlayer.Name = "PbPlayer";
 			this.PbPlayer.Size = new System.Drawing.Size(22, 22);
 			this.PbPlayer.TabIndex = 0;
 			this.PbPlayer.TabStop = false;
-			this.PbPlayer.Click += new System.EventHandler(this.ChangeColor);
 			// 
 			// TxtStepsRemaining
 			// 
@@ -291,11 +286,6 @@
 			this.FlpTop.Size = new System.Drawing.Size(1200, 20);
 			this.FlpTop.TabIndex = 1;
 			// 
-			// CdChangeColors
-			// 
-			this.CdChangeColors.AnyColor = true;
-			this.CdChangeColors.FullOpen = true;
-			// 
 			// UcInformations
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,7 +320,6 @@
 		private System.Windows.Forms.Label TxtStepsRemaining;
 		private System.Windows.Forms.Label TxtBonusStepsRemaining;
 		private System.Windows.Forms.Label TxtBonusTorchRemaining;
-		private System.Windows.Forms.ColorDialog CdChangeColors;
 		private System.Windows.Forms.PictureBox PbPlayer;
 		private System.Windows.Forms.Label LblPlayer;
 		private System.Windows.Forms.Label LblBonusTorch;

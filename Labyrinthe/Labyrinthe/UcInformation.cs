@@ -20,16 +20,5 @@ namespace Labyrinth
 		}
 
 		#endregion
-
-		#region Events
-
-		private void ChangeColor(object sender, EventArgs a)
-		{
-			PictureBox pb = (PictureBox)sender;
-			if (CdChangeColors.ShowDialog() == DialogResult.OK)
-				pb.BackColor = CdChangeColors.Color;
-		}
-
-		#endregion
 	}
 }
