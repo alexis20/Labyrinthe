@@ -7,11 +7,11 @@ namespace Labyrinth
 {
 	public class LabyrinthManager
 	{
-		#region Variables
+		#region Members
 
-		private const int TILESIZE = 15;
+		private const int TILESIZE = 20;
 
-		private static Random rnd = new Random();
+		private static readonly Random rand = new Random();
 
 		private bool hasBeenDisplayed = false;
 		private int _longestPathSoFar;
@@ -42,6 +42,10 @@ namespace Labyrinth
 		public int BonusStepsRemaining { get; private set; }
 
 		public int BonusTorchRemaining { get; private set; }
+
+		public bool IsWinner { get; private set; }
+
+		public bool IsLoser { get; private set; }
 
 		public int Width
 		{
@@ -81,8 +85,8 @@ namespace Labyrinth
 		/// <param name="pStartingPosition">The player's starting position.</param>
 		public LabyrinthManager(int pWidth, int pHeight, Point pStartingPosition)
 		{
-			Width = pWidth;
-			Height = pHeight;
+			Width = pWidth / TILESIZE;
+			Height = pHeight / TILESIZE;
 			StepsRemaining = 500;
 			BonusStepsRemaining = 0;
 			BonusTorchRemaining = 0;
@@ -99,7 +103,7 @@ namespace Labyrinth
 			}
 
 			// Start the excavation from the current position
-			CurrentTile = pStartingPosition;
+			CurrentTile = (pStartingPosition.Equals(new Point(1, 1))) ? GenerateStartingPosition() : pStartingPosition;
 
 			// Add the beginning position to the tiles to try
 			_tileToTry.Push(CurrentTile);
@@ -116,7 +120,7 @@ namespace Labyrinth
 		/// Return the labyrinth into a bitmap format
 		/// </summary>
 		/// <returns>The labyrinth in a bitmap format</returns>
-		public Bitmap DisplayLabyrinth()
+		public Bitmap Display()
 		{
 			// Create a new bitmap with a pixel extra for each tile +1 for drawing a grid around all tiles
 			Bitmap bmp = new Bitmap(1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height);
@@ -225,7 +229,7 @@ namespace Labyrinth
 						_bonuses[_bonuses.IndexOf(bonus)] = newTab;
 
 						if (bonus[1].Equals('_'))
-							BonusTorchRemaining += 20;
+							BonusTorchRemaining += 40;
 						else if (bonus[1].Equals('.'))
 							BonusStepsRemaining += 20;
 					}
@@ -243,33 +247,36 @@ namespace Labyrinth
 		/// <param name="pNewPosition">The new position of the player</param>
 		public void MovePlayer(Point pNewPosition)
 		{
-			if (IsInside(pNewPosition) && IsOnPath(pNewPosition))
+			if (IsInside(pNewPosition) && IsOnPath(pNewPosition) && (!IsWinner || !IsLoser))
 			{
 				CurrentTile = pNewPosition;
 				if (BonusStepsRemaining > 0)
 					--BonusStepsRemaining;
-				else if (!GameOver())
+				else if (StepsRemaining > 0)
 					--StepsRemaining;
 				if (BonusTorchRemaining > 0)
 					--BonusTorchRemaining;
 
-				if (GameOver())
-				{
-
-				}
-			}
+				IsWinner = CurrentTile == FurthestPoint;
+				IsLoser = !IsWinner && StepsRemaining == 0;
+            }
 		}
 
 
-		private bool GameOver()
+		private Point GenerateStartingPosition()
 		{
-			return StepsRemaining == 0;
+			int randX = rand.Next(1, Width - 1);
+			int randY = rand.Next(1, Height - 1);
+
+			if (randX == 0 || randY == 0)
+				GenerateStartingPosition();
+			return new Point(randX, randY);
 		}
 
 
 		private void SetBonuses(StringBuilder sb, char c)
 		{
-			int index = rnd.Next(sb.Length);
+			int index = rand.Next(sb.Length);
 			char[] tab = new char[2];
 			if (sb[index].Equals(' '))
 				sb[index] = c;
@@ -305,7 +312,7 @@ namespace Labyrinth
 					_tileToTry.Push(CurrentTile);
 
 					// Move on to a random of the neighboring tiles
-					CurrentTile = neighbors[rnd.Next(neighbors.Count)];
+					CurrentTile = neighbors[rand.Next(neighbors.Count)];
 				}
 				else
 				{

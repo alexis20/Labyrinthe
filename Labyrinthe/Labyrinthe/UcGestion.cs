@@ -24,7 +24,7 @@ namespace Labyrinth
 
 		public void Display()
 		{
-			labyrinth = new LabyrinthManager(UcLabyrinth.Width / 20, UcLabyrinth.Height / 20);
+			labyrinth = new LabyrinthManager(UcLabyrinth.Width, UcLabyrinth.Height);
 
 			UcGestionInformation.Display(labyrinth);
 		}
@@ -48,6 +48,8 @@ namespace Labyrinth
 
 		private void UcLabyrinth_KeyUp(object sender, KeyEventArgs e)
 		{
+			if (labyrinth.IsWinner || labyrinth.IsLoser) return;
+
 			if (e.KeyCode == Keys.W)
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X, labyrinth.CurrentTile.Y + 1));
 			else if (e.KeyCode == Keys.A)
@@ -59,6 +61,11 @@ namespace Labyrinth
 
 			UcLabyrinth.Display(labyrinth);
 			UcGestionInformation.Display(labyrinth);
+
+			if (labyrinth.IsWinner)
+				MessageBox.Show("You won!");
+			else if (labyrinth.IsLoser)
+				MessageBox.Show("You lost!");
 		}
 
 		#endregion
