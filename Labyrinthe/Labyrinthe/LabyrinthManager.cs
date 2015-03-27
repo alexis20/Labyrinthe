@@ -103,7 +103,10 @@ namespace Labyrinth
 			}
 
 			// Start the excavation from the current position
-			CurrentTile = (pStartingPosition.Equals(new Point(1, 1))) ? GenerateStartingPosition() : pStartingPosition;
+            if (pStartingPosition.Equals(new Point(1, 1)))
+                GenerateStartingPosition();
+            else
+                CurrentTile = pStartingPosition;
 
 			// Add the beginning position to the tiles to try
 			_tileToTry.Push(CurrentTile);
@@ -147,6 +150,7 @@ namespace Labyrinth
 							break;
 						case 'O':	// Player
 							fillBrush = Brushes.Red;
+                            //g.DrawEllipse(Pens.Red, 1 + x * 10, 1 + y * 10, TILESIZE * 5, TILESIZE * 5);
 							break;
 						case ' ':	// Path
 							fillBrush = Brushes.White;
@@ -263,14 +267,12 @@ namespace Labyrinth
 		}
 
 
-		private Point GenerateStartingPosition()
+		private void GenerateStartingPosition()
 		{
-			int randX = rand.Next(1, Width - 1);
-			int randY = rand.Next(1, Height - 1);
-
-			if (randX == 0 || randY == 0)
-				GenerateStartingPosition();
-			return new Point(randX, randY);
+            do
+            {
+                CurrentTile = new Point(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
+            } while (CurrentTile.X == 0 || CurrentTile.Y == 0);
 		}
 
 
