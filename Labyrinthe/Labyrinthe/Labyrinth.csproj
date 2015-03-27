@@ -7,7 +7,7 @@
     <ProjectGuid>{FF15D2C5-6189-4F40-B274-FD7BB83B940F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Labyrinthe</RootNamespace>
+    <RootNamespace>Labyrinth</RootNamespace>
     <AssemblyName>Labyrinthe</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -65,17 +65,17 @@
     <Compile Include="UcGestionInformation.Designer.cs">
       <DependentUpon>UcGestionInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcLabyrinth.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UcLabyrinth.Designer.cs">
-      <DependentUpon>UcLabyrinth.cs</DependentUpon>
-    </Compile>
     <Compile Include="UcInformation.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UcInformation.Designer.cs">
       <DependentUpon>UcInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcLabyrinth.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcLabyrinth.Designer.cs">
+      <DependentUpon>UcLabyrinth.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormLabyrinth.resx">
       <DependentUpon>FormLabyrinth.cs</DependentUpon>
@@ -88,6 +88,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UcGestion.resx">
       <DependentUpon>UcGestion.cs</DependentUpon>
