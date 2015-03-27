@@ -68,6 +68,7 @@
             this.LblStepsRemaining.Size = new System.Drawing.Size(85, 41);
             this.LblStepsRemaining.TabIndex = 0;
             this.LblStepsRemaining.Text = "Steps remaining:";
+            this.LblStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LblBonusStepsRemaining
             // 
@@ -78,6 +79,7 @@
             this.LblBonusStepsRemaining.Size = new System.Drawing.Size(85, 41);
             this.LblBonusStepsRemaining.TabIndex = 1;
             this.LblBonusStepsRemaining.Text = "Bonus steps:";
+            this.LblBonusStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LblBonusTorchRemaining
             // 
@@ -88,6 +90,7 @@
             this.LblBonusTorchRemaining.Size = new System.Drawing.Size(85, 42);
             this.LblBonusTorchRemaining.TabIndex = 2;
             this.LblBonusTorchRemaining.Text = "Bonus torch:";
+            this.LblBonusTorchRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtStepsRemaining
             // 
@@ -98,6 +101,7 @@
             this.TxtStepsRemaining.Name = "TxtStepsRemaining";
             this.TxtStepsRemaining.Size = new System.Drawing.Size(792, 41);
             this.TxtStepsRemaining.TabIndex = 3;
+            this.TxtStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtBonusStepsRemaining
             // 
@@ -108,6 +112,7 @@
             this.TxtBonusStepsRemaining.Name = "TxtBonusStepsRemaining";
             this.TxtBonusStepsRemaining.Size = new System.Drawing.Size(792, 41);
             this.TxtBonusStepsRemaining.TabIndex = 4;
+            this.TxtBonusStepsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtBonusTorchRemaining
             // 
@@ -118,6 +123,7 @@
             this.TxtBonusTorchRemaining.Name = "TxtBonusTorchRemaining";
             this.TxtBonusTorchRemaining.Size = new System.Drawing.Size(792, 42);
             this.TxtBonusTorchRemaining.TabIndex = 5;
+            this.TxtBonusTorchRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // UcInformation
             // 

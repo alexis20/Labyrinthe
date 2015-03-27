@@ -24,9 +24,9 @@ namespace Labyrinth
 
 		public void Display()
 		{
-			//labyrinth = new LabyrinthManager(UcLabyrinth.Width, UcLabyrinth.Height);
+			labyrinth = new LabyrinthManager(UcLabyrinth.Width, UcLabyrinth.Height);
 
-			//UcGestionInformation.Display(labyrinth);
+			UcGestionInformation.Display(labyrinth);
 		}
 
 		#endregion
@@ -35,14 +35,14 @@ namespace Labyrinth
 
 		private void UcGestionInformation_Start(object sender, System.EventArgs e)
 		{
-			//UcLabyrinth.Display(labyrinth);
+			UcLabyrinth.Display(labyrinth);
 		}
 
 
 		private void UcGestionInformation_Restart(object sender, System.EventArgs e)
 		{
 			Display();
-			//UcLabyrinth.Display(labyrinth);
+			UcLabyrinth.Display(labyrinth);
         }
 
 
@@ -59,8 +59,8 @@ namespace Labyrinth
 			else if (e.KeyCode == Keys.D)
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X + 1, labyrinth.CurrentTile.Y));
 
-			//UcLabyrinth.Display(labyrinth);
-			//UcGestionInformation.Display(labyrinth);
+			UcLabyrinth.Display(labyrinth);
+			UcGestionInformation.Display(labyrinth);
 
 			if (labyrinth.IsWinner)
 				MessageBox.Show("You won!");
