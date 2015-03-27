@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 
 namespace Labyrinth
@@ -128,6 +129,10 @@ namespace Labyrinth
 			// Create a new bitmap with a pixel extra for each tile +1 for drawing a grid around all tiles
 			Bitmap bmp = new Bitmap(1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height);
 			Graphics g = Graphics.FromImage(bmp);
+            GraphicsPath path = new GraphicsPath();
+
+            // The player coordinates
+            Point playerCoordinates = new Point(0, 0);
 
 			// Fill the grapics with grey
 			g.FillRectangle(Brushes.DarkGray, new Rectangle(0, 0, bmp.Width, bmp.Height));
@@ -150,7 +155,7 @@ namespace Labyrinth
 							break;
 						case 'O':	// Player
 							fillBrush = Brushes.Red;
-                            //g.DrawEllipse(Pens.Red, 1 + x * 10, 1 + y * 10, TILESIZE * 5, TILESIZE * 5);
+                            playerCoordinates = new Point(1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1));
 							break;
 						case ' ':	// Path
 							fillBrush = Brushes.White;
@@ -169,8 +174,14 @@ namespace Labyrinth
 					g.FillRectangle(fillBrush, 1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1), TILESIZE, TILESIZE);
 				}
 			}
+
+            //g.DrawEllipse(Pens.Red, (float)(playerCoordinates.X - (TILESIZE * 2.9)), (float)(playerCoordinates.Y - (TILESIZE * 2.9)), TILESIZE * 7, TILESIZE * 7);
+            path.AddEllipse((float)(playerCoordinates.X - (TILESIZE * 2.9)), (float)(playerCoordinates.Y - (TILESIZE * 2.9)), TILESIZE * 7, TILESIZE * 7);
+
+
 			// Dispose of the graphics object
 			g.Dispose();
+            path.Dispose();
 
 			return bmp;
 		}
