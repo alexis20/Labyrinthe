@@ -173,6 +173,7 @@ namespace Labyrinth
 							fillBrush = Brushes.CornflowerBlue;
 							break;
 					}
+
 					// Draw the tile in
 					g.FillRectangle(fillBrush, 1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1), TILESIZE, TILESIZE);
 				}
