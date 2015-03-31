@@ -7,10 +7,25 @@
     <ProjectGuid>{FF15D2C5-6189-4F40-B274-FD7BB83B940F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Labyrinthe</RootNamespace>
+    <RootNamespace>Labyrinth</RootNamespace>
     <AssemblyName>Labyrinthe</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publier\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,17 +80,17 @@
     <Compile Include="UcGestionInformation.Designer.cs">
       <DependentUpon>UcGestionInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcLabyrinth.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UcLabyrinth.Designer.cs">
-      <DependentUpon>UcLabyrinth.cs</DependentUpon>
-    </Compile>
     <Compile Include="UcInformation.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UcInformation.Designer.cs">
       <DependentUpon>UcInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcLabyrinth.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcLabyrinth.Designer.cs">
+      <DependentUpon>UcLabyrinth.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormLabyrinth.resx">
       <DependentUpon>FormLabyrinth.cs</DependentUpon>
@@ -88,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UcGestion.resx">
       <DependentUpon>UcGestion.cs</DependentUpon>
@@ -113,6 +129,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,123 +1,138 @@
 ﻿namespace Labyrinth
 {
-	partial class UcGestionInformation
-	{
-		/// <summary> 
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class UcGestionInformation
+    {
+        /// <summary> 
+        /// Variable nécessaire au concepteur.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary> 
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary> 
+        /// Nettoyage des ressources utilisées.
+        /// </summary>
+        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Component Designer generated code
+        #region Code généré par le Concepteur de composants
 
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			this.TlpButtons = new System.Windows.Forms.TableLayoutPanel();
+        /// <summary> 
+        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
+        /// le contenu de cette méthode avec l'éditeur de code.
+        /// </summary>
+        private void InitializeComponent()
+        {
+			this.TlpInformation = new System.Windows.Forms.TableLayoutPanel();
 			this.BtnStart = new System.Windows.Forms.Button();
-			this.BtnRestart = new System.Windows.Forms.Button();
 			this.BtnExit = new System.Windows.Forms.Button();
+			this.BtnRestart = new System.Windows.Forms.Button();
 			this.UcInformation = new Labyrinth.UcInformation();
-			this.TlpButtons.SuspendLayout();
+			this.PnlMain = new System.Windows.Forms.Panel();
+			this.TlpInformation.SuspendLayout();
+			this.PnlMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// TlpButtons
+			// TlpInformation
 			// 
-			this.TlpButtons.ColumnCount = 1;
-			this.TlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TlpButtons.Controls.Add(this.BtnStart, 0, 0);
-			this.TlpButtons.Controls.Add(this.BtnRestart, 0, 1);
-			this.TlpButtons.Controls.Add(this.BtnExit, 0, 2);
-			this.TlpButtons.Dock = System.Windows.Forms.DockStyle.Right;
-			this.TlpButtons.Location = new System.Drawing.Point(1050, 0);
-			this.TlpButtons.Name = "TlpButtons";
-			this.TlpButtons.RowCount = 3;
-			this.TlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.TlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.TlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.TlpButtons.Size = new System.Drawing.Size(148, 115);
-			this.TlpButtons.TabIndex = 1;
+			this.TlpInformation.ColumnCount = 2;
+			this.TlpInformation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.TlpInformation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+			this.TlpInformation.Controls.Add(this.BtnStart, 1, 0);
+			this.TlpInformation.Controls.Add(this.BtnExit, 1, 2);
+			this.TlpInformation.Controls.Add(this.BtnRestart, 1, 1);
+			this.TlpInformation.Controls.Add(this.UcInformation, 0, 0);
+			this.TlpInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TlpInformation.Location = new System.Drawing.Point(0, 0);
+			this.TlpInformation.Name = "TlpInformation";
+			this.TlpInformation.RowCount = 3;
+			this.TlpInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.TlpInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.TlpInformation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.TlpInformation.Size = new System.Drawing.Size(923, 111);
+			this.TlpInformation.TabIndex = 0;
 			// 
 			// BtnStart
 			// 
 			this.BtnStart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.BtnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.BtnStart.Location = new System.Drawing.Point(3, 3);
+			this.BtnStart.Location = new System.Drawing.Point(789, 3);
 			this.BtnStart.Name = "BtnStart";
-			this.BtnStart.Size = new System.Drawing.Size(142, 32);
+			this.BtnStart.Size = new System.Drawing.Size(131, 31);
 			this.BtnStart.TabIndex = 0;
 			this.BtnStart.Text = "Start";
 			this.BtnStart.UseVisualStyleBackColor = true;
 			this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
+			// 
+			// BtnExit
+			// 
+			this.BtnExit.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.BtnExit.Location = new System.Drawing.Point(789, 77);
+			this.BtnExit.Name = "BtnExit";
+			this.BtnExit.Size = new System.Drawing.Size(131, 31);
+			this.BtnExit.TabIndex = 2;
+			this.BtnExit.Text = "Exit";
+			this.BtnExit.UseVisualStyleBackColor = true;
+			this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
 			// 
 			// BtnRestart
 			// 
 			this.BtnRestart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.BtnRestart.Enabled = false;
 			this.BtnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.BtnRestart.Location = new System.Drawing.Point(3, 41);
+			this.BtnRestart.Location = new System.Drawing.Point(789, 40);
 			this.BtnRestart.Name = "BtnRestart";
-			this.BtnRestart.Size = new System.Drawing.Size(142, 32);
+			this.BtnRestart.Size = new System.Drawing.Size(131, 31);
 			this.BtnRestart.TabIndex = 1;
 			this.BtnRestart.Text = "Restart";
 			this.BtnRestart.UseVisualStyleBackColor = true;
 			this.BtnRestart.Click += new System.EventHandler(this.BtnRestart_Click);
 			// 
-			// BtnExit
-			// 
-			this.BtnExit.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.BtnExit.Location = new System.Drawing.Point(3, 79);
-			this.BtnExit.Name = "BtnExit";
-			this.BtnExit.Size = new System.Drawing.Size(142, 33);
-			this.BtnExit.TabIndex = 2;
-			this.BtnExit.Text = "Exit";
-			this.BtnExit.UseVisualStyleBackColor = true;
-			this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
-			// 
 			// UcInformation
 			// 
 			this.UcInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.UcInformation.Location = new System.Drawing.Point(0, 0);
+			this.UcInformation.Location = new System.Drawing.Point(3, 3);
 			this.UcInformation.Name = "UcInformation";
-			this.UcInformation.Size = new System.Drawing.Size(1050, 115);
-			this.UcInformation.TabIndex = 0;
+			this.TlpInformation.SetRowSpan(this.UcInformation, 3);
+			this.UcInformation.Size = new System.Drawing.Size(780, 105);
+			this.UcInformation.TabIndex = 3;
+			// 
+			// PnlMain
+			// 
+			this.PnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PnlMain.Controls.Add(this.TlpInformation);
+			this.PnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PnlMain.Location = new System.Drawing.Point(0, 0);
+			this.PnlMain.Name = "PnlMain";
+			this.PnlMain.Size = new System.Drawing.Size(925, 113);
+			this.PnlMain.TabIndex = 1;
 			// 
 			// UcGestionInformation
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.Controls.Add(this.UcInformation);
-			this.Controls.Add(this.TlpButtons);
+			this.Controls.Add(this.PnlMain);
 			this.Name = "UcGestionInformation";
-			this.Size = new System.Drawing.Size(1198, 115);
-			this.TlpButtons.ResumeLayout(false);
+			this.Size = new System.Drawing.Size(925, 113);
+			this.TlpInformation.ResumeLayout(false);
+			this.PnlMain.ResumeLayout(false);
 			this.ResumeLayout(false);
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private Labyrinth.UcInformation UcInformation;
-		private System.Windows.Forms.TableLayoutPanel TlpButtons;
-		private System.Windows.Forms.Button BtnStart;
-		private System.Windows.Forms.Button BtnRestart;
-		private System.Windows.Forms.Button BtnExit;
-	}
+        private System.Windows.Forms.TableLayoutPanel TlpInformation;
+        private System.Windows.Forms.Button BtnStart;
+        private System.Windows.Forms.Button BtnExit;
+        private System.Windows.Forms.Button BtnRestart;
+        private UcInformation UcInformation;
+        private System.Windows.Forms.Panel PnlMain;
+    }
 }

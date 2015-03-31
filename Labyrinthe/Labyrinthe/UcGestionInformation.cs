@@ -1,63 +1,70 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Labyrinth
 {
-	public partial class UcGestionInformation : UserControl
-	{
-		#region Properties
+    public partial class UcGestionInformation : UserControl
+    {
+        #region Properties
 
-		public event EventHandler Start;
-		public event EventHandler Restart;
+        public event EventHandler Start;
+        public event EventHandler Restart;
 
-		#endregion
+        #endregion
 
-		#region Constructor
+        #region Constructor
 
-		public UcGestionInformation()
-		{
-			InitializeComponent();
-		}
+        public UcGestionInformation()
+        {
+            InitializeComponent();
+        }
 
-		#endregion
+        #endregion
 
-		#region Methods
+        #region Methods
 
-		public void Display(LabyrinthManager pLabyrinth)
-		{
-			UcInformation.Display(pLabyrinth);
-		}
+        public void Display(LabyrinthManager pLabyrinth)
+        {
+            UcInformation.Display(pLabyrinth);
+        }
 
-		#endregion
+        #endregion
 
-		#region Events
+        #region Events
 
-		private void BtnStart_Click(object sender, EventArgs e)
-		{
-			BtnStart.Enabled = false;
-			BtnRestart.Enabled = true;
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            BtnStart.Enabled = false;
+            BtnRestart.Enabled = true;
 
-			if (Start != null)
-				Start(this, e);
-		}
-
-
-		private void BtnRestart_Click(object sender, EventArgs e)
-		{
-			if (MessageBox.Show("Do you really want to restart the game?", "Restart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-			{
-				if (Restart != null)
-					Restart(this, e);
-			}
-		}
+            if (Start != null)
+                Start(this, e);
+        }
 
 
-		private void BtnExit_Click(object sender, EventArgs e)
-		{
-			if (MessageBox.Show("Do you really want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-				Application.Exit();
-		}
+        private void BtnRestart_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you really want to restart the game?", "Restart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (Restart != null)
+                    Restart(this, e);
+            }
+        }
 
-		#endregion
-	}
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you really want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Application.Exit();
+        }
+
+        #endregion
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 
 namespace Labyrinth
@@ -9,7 +10,10 @@ namespace Labyrinth
 	{
 		#region Members
 
-		private const int TILESIZE = 20;
+		private const int STARTING_STEPS = 80;
+		private const int TILESIZE = 40;
+		private const int BONUS_STEPS = 20;
+		private const int BONUS_TORCH = 9;
 
 		private static readonly Random rand = new Random();
 
@@ -87,7 +91,7 @@ namespace Labyrinth
 		{
 			Width = pWidth / TILESIZE;
 			Height = pHeight / TILESIZE;
-			StepsRemaining = 500;
+			StepsRemaining = STARTING_STEPS;
 			BonusStepsRemaining = 0;
 			BonusTorchRemaining = 0;
 
@@ -103,7 +107,10 @@ namespace Labyrinth
 			}
 
 			// Start the excavation from the current position
-			CurrentTile = (pStartingPosition.Equals(new Point(1, 1))) ? GenerateStartingPosition() : pStartingPosition;
+            if (pStartingPosition.Equals(new Point(1, 1)))
+                GenerateStartingPosition();
+            else
+                CurrentTile = pStartingPosition;
 
 			// Add the beginning position to the tiles to try
 			_tileToTry.Push(CurrentTile);
@@ -125,6 +132,10 @@ namespace Labyrinth
 			// Create a new bitmap with a pixel extra for each tile +1 for drawing a grid around all tiles
 			Bitmap bmp = new Bitmap(1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height);
 			Graphics g = Graphics.FromImage(bmp);
+            GraphicsPath path = new GraphicsPath();
+
+            // The player coordinates
+            Point playerCoordinates = new Point(0, 0);
 
 			// Fill the grapics with grey
 			g.FillRectangle(Brushes.DarkGray, new Rectangle(0, 0, bmp.Width, bmp.Height));
@@ -147,6 +158,7 @@ namespace Labyrinth
 							break;
 						case 'O':	// Player
 							fillBrush = Brushes.Red;
+                            playerCoordinates = new Point(1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1));
 							break;
 						case ' ':	// Path
 							fillBrush = Brushes.White;
@@ -165,8 +177,23 @@ namespace Labyrinth
 					g.FillRectangle(fillBrush, 1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1), TILESIZE, TILESIZE);
 				}
 			}
+
+			// Create a "shadow" around the player
+			path.AddRectangle(new Rectangle(0, 0, 1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height));
+
+			if (BonusTorchRemaining > 0)
+				path.AddEllipse((float)(playerCoordinates.X - (TILESIZE * 4)), (float)(playerCoordinates.Y - (TILESIZE * 4)), TILESIZE * BONUS_TORCH, TILESIZE * BONUS_TORCH);
+			else
+				path.AddEllipse((float)(playerCoordinates.X - (TILESIZE * 2.9)), (float)(playerCoordinates.Y - (TILESIZE * 2.9)), TILESIZE * (BONUS_TORCH - 2), TILESIZE * (BONUS_TORCH - 2));
+
+
+			g.SetClip(path, CombineMode.Intersect);
+			g.FillRectangle(Brushes.Black, new Rectangle(0, 0, 1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height));
+
+
 			// Dispose of the graphics object
 			g.Dispose();
+            path.Dispose();
 
 			return bmp;
 		}
@@ -214,6 +241,7 @@ namespace Labyrinth
 				sb.AppendLine();
 			}
 
+			// Place the bonuses on the map
 			if (hasBeenDisplayed)
 			{
 				for (int i = _bonuses.Count - 1; i >= 0; --i)
@@ -229,9 +257,9 @@ namespace Labyrinth
 						_bonuses[_bonuses.IndexOf(bonus)] = newTab;
 
 						if (bonus[1].Equals('_'))
-							BonusTorchRemaining += 40;
+							BonusTorchRemaining += BONUS_STEPS;
 						else if (bonus[1].Equals('.'))
-							BonusStepsRemaining += 20;
+							BonusStepsRemaining += BONUS_STEPS;
 					}
 				}
 			}
@@ -263,14 +291,12 @@ namespace Labyrinth
 		}
 
 
-		private Point GenerateStartingPosition()
+		private void GenerateStartingPosition()
 		{
-			int randX = rand.Next(1, Width - 1);
-			int randY = rand.Next(1, Height - 1);
-
-			if (randX == 0 || randY == 0)
-				GenerateStartingPosition();
-			return new Point(randX, randY);
+            do
+            {
+                CurrentTile = new Point(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
+            } while (CurrentTile.X == 0 || CurrentTile.Y == 0);
 		}
 
 

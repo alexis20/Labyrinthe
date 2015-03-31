@@ -28,45 +28,61 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.UcLabyrinth = new Labyrinth.UcLabyrinth();
-			this.UcGestionInformation = new Labyrinth.UcGestionInformation();
-			this.SuspendLayout();
-			// 
-			// UcLabyrinth
-			// 
-			this.UcLabyrinth.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.UcLabyrinth.Location = new System.Drawing.Point(0, 0);
-			this.UcLabyrinth.Name = "UcLabyrinth";
-			this.UcLabyrinth.Size = new System.Drawing.Size(1326, 635);
-			this.UcLabyrinth.TabIndex = 1;
-			this.UcLabyrinth.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UcLabyrinth_KeyUp);
-			// 
-			// UcGestionInformation
-			// 
-			this.UcGestionInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.UcGestionInformation.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.UcGestionInformation.Location = new System.Drawing.Point(0, 635);
-			this.UcGestionInformation.Name = "UcGestionInformation";
-			this.UcGestionInformation.Size = new System.Drawing.Size(1326, 115);
-			this.UcGestionInformation.TabIndex = 0;
-			this.UcGestionInformation.Start += new System.EventHandler(this.UcGestionInformation_Start);
-			this.UcGestionInformation.Restart += new System.EventHandler(this.UcGestionInformation_Restart);
-			// 
-			// UcGestion
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.UcLabyrinth);
-			this.Controls.Add(this.UcGestionInformation);
-			this.Name = "UcGestion";
-			this.Size = new System.Drawing.Size(1326, 750);
-			this.ResumeLayout(false);
+            this.TlpMain = new System.Windows.Forms.TableLayoutPanel();
+            this.UcLabyrinth = new Labyrinth.UcLabyrinth();
+            this.UcGestionInformation = new Labyrinth.UcGestionInformation();
+            this.TlpMain.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // TlpMain
+            // 
+            this.TlpMain.ColumnCount = 1;
+            this.TlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpMain.Controls.Add(this.UcLabyrinth, 0, 0);
+            this.TlpMain.Controls.Add(this.UcGestionInformation, 0, 1);
+            this.TlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TlpMain.Location = new System.Drawing.Point(0, 0);
+            this.TlpMain.Name = "TlpMain";
+            this.TlpMain.RowCount = 2;
+            this.TlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.TlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TlpMain.Size = new System.Drawing.Size(979, 554);
+            this.TlpMain.TabIndex = 0;
+            // 
+            // UcLabyrinth
+            // 
+            this.UcLabyrinth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UcLabyrinth.Location = new System.Drawing.Point(3, 3);
+            this.UcLabyrinth.Name = "UcLabyrinth";
+            this.UcLabyrinth.Size = new System.Drawing.Size(973, 422);
+            this.UcLabyrinth.TabIndex = 0;
+            this.UcLabyrinth.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UcLabyrinth_KeyUp);
+            // 
+            // UcGestionInformation
+            // 
+            this.UcGestionInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UcGestionInformation.Location = new System.Drawing.Point(3, 431);
+            this.UcGestionInformation.Name = "UcGestionInformation";
+            this.UcGestionInformation.Size = new System.Drawing.Size(973, 120);
+            this.UcGestionInformation.TabIndex = 1;
+            this.UcGestionInformation.Start += new System.EventHandler(this.UcGestionInformation_Start);
+            this.UcGestionInformation.Restart += new System.EventHandler(this.UcGestionInformation_Restart);
+            // 
+            // UcGestion
+            // 
+            this.Controls.Add(this.TlpMain);
+            this.Name = "UcGestion";
+            this.Size = new System.Drawing.Size(979, 554);
+            this.TlpMain.ResumeLayout(false);
+            this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private UcGestionInformation UcGestionInformation;
-		private Labyrinth.UcLabyrinth UcLabyrinth;
+        private System.Windows.Forms.TableLayoutPanel TlpMain;
+        private UcLabyrinth UcLabyrinth;
+        private UcGestionInformation UcGestionInformation;
 	}
 }
