@@ -51,7 +51,8 @@ namespace Labyrinth
 
 		private void BtnExit_Click(object sender, System.EventArgs e)
 		{
-			Application.Exit();
+			if (MessageBox.Show("Do you really want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+				Application.Exit();
 		}
 
 		#endregion

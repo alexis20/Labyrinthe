@@ -413,8 +413,8 @@
 			// 
 			this.BtnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.BtnExit.Location = new System.Drawing.Point(253, 5);
-			this.BtnExit.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
+			this.BtnExit.Location = new System.Drawing.Point(258, 5);
+			this.BtnExit.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
 			this.BtnExit.Name = "BtnExit";
 			this.BtnExit.Size = new System.Drawing.Size(115, 38);
 			this.BtnExit.TabIndex = 0;
@@ -426,7 +426,7 @@
 			// 
 			this.BtnRestart.DialogResult = System.Windows.Forms.DialogResult.Retry;
 			this.BtnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.BtnRestart.Location = new System.Drawing.Point(133, 5);
+			this.BtnRestart.Location = new System.Drawing.Point(138, 5);
 			this.BtnRestart.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
 			this.BtnRestart.Name = "BtnRestart";
 			this.BtnRestart.Size = new System.Drawing.Size(115, 38);

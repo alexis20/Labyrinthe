@@ -1,11 +1,9 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Labyrinth
 {
 	public partial class UcLabyrinth : UserControl
 	{
-
 		#region Constructor
 
 		public UcLabyrinth()
