@@ -44,11 +44,11 @@ namespace Labyrinth
 
 		public int TotalSteps { get; private set; }
 
-		public int TotalBonusStepsTaken { get; private set; }
+		public int BonusStepsTaken { get; private set; }
 
 		public int TotalBonusSteps { get; private set; }
 
-		public int TotalBonusTorchTaken { get; private set; }
+		public int BonusTorchTaken { get; private set; }
 
 		public int TotalBonusTorch { get; private set; }
 
@@ -104,8 +104,8 @@ namespace Labyrinth
 			Height = pHeight / TILESIZE;
 
 			TotalSteps = 0;
-			TotalBonusStepsTaken = 0;
-			TotalBonusTorchTaken = 0;
+			BonusStepsTaken = 0;
+			BonusTorchTaken = 0;
 
 			StepsRemaining = STARTING_STEPS;
 			BonusStepsRemaining = 0;
@@ -279,14 +279,14 @@ namespace Labyrinth
 						{
 							BonusTorchRemaining += BONUS_STEPS_TORCH;
 							TotalBonusTorch += BONUS_STEPS_TORCH;
-							++TotalBonusTorchTaken;
+							++BonusTorchTaken;
 						}
 
 						else if (bonus[1].Equals('.'))
 						{
 							BonusStepsRemaining += BONUS_STEPS;
 							TotalBonusSteps += BONUS_STEPS;
-							++TotalBonusStepsTaken;
+							++BonusStepsTaken;
 						}
 					}
 				}

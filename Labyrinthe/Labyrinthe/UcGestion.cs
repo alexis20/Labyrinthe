@@ -8,6 +8,7 @@ namespace Labyrinth
 		#region Variables
 
 		private LabyrinthManager labyrinth = null;
+		private int time = 0;
 
 		#endregion
 
@@ -25,6 +26,7 @@ namespace Labyrinth
 		public void Display()
 		{
 			labyrinth = new LabyrinthManager(UcLabyrinth.Width, UcLabyrinth.Height);
+			time = 0;
 
 			UcGestionInformation.Display(labyrinth);
 		}
@@ -36,6 +38,7 @@ namespace Labyrinth
 		private void UcGestionInformation_Start(object sender, System.EventArgs e)
 		{
 			UcLabyrinth.Display(labyrinth);
+			TmrGameTime.Enabled = true;
 		}
 
 
@@ -43,7 +46,8 @@ namespace Labyrinth
 		{
 			Display();
 			UcLabyrinth.Display(labyrinth);
-        }
+			TmrGameTime.Enabled = true;
+		}
 
 
 		private void UcLabyrinth_KeyUp(object sender, KeyEventArgs e)
@@ -62,10 +66,24 @@ namespace Labyrinth
 			UcLabyrinth.Display(labyrinth);
 			UcGestionInformation.Display(labyrinth);
 
-			if (labyrinth.IsWinner)
-				MessageBox.Show("You won!");
-			else if (labyrinth.IsLoser)
-				MessageBox.Show("You lost!");
+			// Check if game is over
+			if (labyrinth.IsWinner || labyrinth.IsLoser)
+			{
+				TmrGameTime.Enabled = false;
+
+				if (new FormGameOver(labyrinth, time).ShowDialog() == DialogResult.Retry)
+				{
+					Display();
+					UcLabyrinth.Display(labyrinth);
+					TmrGameTime.Enabled = true;
+				}
+			}
+		}
+
+
+		private void TmrGameTime_Tick(object sender, System.EventArgs e)
+		{
+			++time;
 		}
 
 		#endregion
