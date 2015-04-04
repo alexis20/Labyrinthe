@@ -12,8 +12,9 @@ namespace Labyrinth
 
 		private const int STARTING_STEPS = 80;
 		private const int TILESIZE = 40;
-		private const int BONUS_STEPS = 20;
-		private const int BONUS_TORCH = 9;
+		private const int BONUS_STEPS = 25;
+		private const int BONUS_STEPS_TORCH = 20;
+		private const int BONUS_TORCH_SIZE = 9;
 
 		private static readonly Random rand = new Random();
 
@@ -21,7 +22,7 @@ namespace Labyrinth
 		private int _longestPathSoFar;
 		private int _width, _height;
 		private Point _currentTile;
-		private List<char[]> _bonuses;
+		private List<char[]> _bonusPositions;
 
 		/// <summary>
 		/// The stack of points no tested yet
@@ -40,6 +41,16 @@ namespace Labyrinth
 		public byte[,] Labyrinth { get; private set; }
 
 		public Point FurthestPoint { get; private set; }
+
+		public int TotalSteps { get; private set; }
+
+		public int TotalBonusStepsTaken { get; private set; }
+
+		public int TotalBonusSteps { get; private set; }
+
+		public int TotalBonusTorchTaken { get; private set; }
+
+		public int TotalBonusTorch { get; private set; }
 
 		public int StepsRemaining { get; private set; }
 
@@ -74,29 +85,34 @@ namespace Labyrinth
 		#region Constructors
 
 		/// <summary>
-		/// Creates a new LabyrinthGenerator with mazes starting at (1,1).
+		/// Creates a new LabyrinthGenerator with the player starting at (1,1).
 		/// </summary>
-		/// <param name="pWidth">The number of tiles across in the mazes to generate. Must include the two extra tiles for a wall in both sides.</param>
-		/// <param name="pHeight">The number of tiles from top to bottom in the mazes to generate. Must include the two ekstra tiles for a wall both at top and bottom.</param>
+		/// <param name="pWidth">The number of tiles across in the labyrinth to generate. Must include the two extra tiles for a wall in both sides.</param>
+		/// <param name="pHeight">The number of tiles from top to bottom in the labyrinth to generate. Must include the two ekstra tiles for a wall both at top and bottom.</param>
 		public LabyrinthManager(int pWidth, int pHeight) : this(pWidth, pHeight, new Point(1, 1)) { }
 
 
 		/// <summary>
-		/// Creates a new LabyrinthGenerator with mazes starting at the requested startingPosition.
+		/// Creates a new LabyrinthGenerator with the player starting at the requested startingPosition.
 		/// </summary>
-		/// <param name="pWidth">The number of tiles across in the mazes to generate. Must include the two ekstra tiles for a wall in both sides.</param>
-		/// <param name="pHeight">The number of tiles from top to bottom in the mazes to generate. Must include the two ekstra tiles for a wall both at top and bottom.</param>
+		/// <param name="pWidth">The number of tiles across in the labyrinth to generate. Must include the two ekstra tiles for a wall in both sides.</param>
+		/// <param name="pHeight">The number of tiles from top to bottom in the labyrinth to generate. Must include the two ekstra tiles for a wall both at top and bottom.</param>
 		/// <param name="pStartingPosition">The player's starting position.</param>
 		public LabyrinthManager(int pWidth, int pHeight, Point pStartingPosition)
 		{
 			Width = pWidth / TILESIZE;
 			Height = pHeight / TILESIZE;
+
+			TotalSteps = 0;
+			TotalBonusStepsTaken = 0;
+			TotalBonusTorchTaken = 0;
+
 			StepsRemaining = STARTING_STEPS;
 			BonusStepsRemaining = 0;
 			BonusTorchRemaining = 0;
 
 			hasBeenDisplayed = false;
-			_bonuses = new List<char[]>();
+			_bonusPositions = new List<char[]>();
 			Labyrinth = new byte[Width, Height];
 
 			// Initialize all fields as taken
@@ -107,10 +123,10 @@ namespace Labyrinth
 			}
 
 			// Start the excavation from the current position
-            if (pStartingPosition.Equals(new Point(1, 1)))
-                GenerateStartingPosition();
-            else
-                CurrentTile = pStartingPosition;
+			if (pStartingPosition.Equals(new Point(1, 1)))
+				GenerateStartingPosition();
+			else
+				CurrentTile = pStartingPosition;
 
 			// Add the beginning position to the tiles to try
 			_tileToTry.Push(CurrentTile);
@@ -123,24 +139,26 @@ namespace Labyrinth
 
 		#region Methods
 
+		#region GetMap
+
 		/// <summary>
 		/// Return the labyrinth into a bitmap format
 		/// </summary>
 		/// <returns>The labyrinth in a bitmap format</returns>
-		public Bitmap Display()
+		public Bitmap GetBitmap()
 		{
 			// Create a new bitmap with a pixel extra for each tile +1 for drawing a grid around all tiles
 			Bitmap bmp = new Bitmap(1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height);
 			Graphics g = Graphics.FromImage(bmp);
-            GraphicsPath path = new GraphicsPath();
+			GraphicsPath path = new GraphicsPath();
 
-            // The player coordinates
-            Point playerCoordinates = new Point(0, 0);
+			// The player coordinates
+			Point playerCoordinates = new Point(0, 0);
 
 			// Fill the grapics with grey
 			g.FillRectangle(Brushes.DarkGray, new Rectangle(0, 0, bmp.Width, bmp.Height));
 
-			// Get the current maze as a string, and replace any newlines
+			// Get the current labyrinth as a string, and replace any newlines
 			string mazeString = ToString().Replace(Environment.NewLine, "");
 
 			// Store a fillBrush as white
@@ -158,7 +176,7 @@ namespace Labyrinth
 							break;
 						case 'O':	// Player
 							fillBrush = Brushes.Red;
-                            playerCoordinates = new Point(1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1));
+							playerCoordinates = new Point(1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1));
 							break;
 						case ' ':	// Path
 							fillBrush = Brushes.White;
@@ -182,28 +200,27 @@ namespace Labyrinth
 			// Create a "shadow" around the player
 			path.AddRectangle(new Rectangle(0, 0, 1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height));
 
+			// Create a bigger light torch if the player has taken the bonus
 			if (BonusTorchRemaining > 0)
-				path.AddEllipse((float)(playerCoordinates.X - (TILESIZE * 4)), (float)(playerCoordinates.Y - (TILESIZE * 4)), TILESIZE * BONUS_TORCH, TILESIZE * BONUS_TORCH);
+				path.AddEllipse((float)(playerCoordinates.X - (TILESIZE * 4)), (float)(playerCoordinates.Y - (TILESIZE * 4)), TILESIZE * BONUS_TORCH_SIZE, TILESIZE * BONUS_TORCH_SIZE);
 			else
-				path.AddEllipse((float)(playerCoordinates.X - (TILESIZE * 2.9)), (float)(playerCoordinates.Y - (TILESIZE * 2.9)), TILESIZE * (BONUS_TORCH - 2), TILESIZE * (BONUS_TORCH - 2));
-
+				path.AddEllipse((float)(playerCoordinates.X - (TILESIZE * 2.9)), (float)(playerCoordinates.Y - (TILESIZE * 2.9)), TILESIZE * (BONUS_TORCH_SIZE - 2), TILESIZE * (BONUS_TORCH_SIZE - 2));
 
 			g.SetClip(path, CombineMode.Intersect);
 			g.FillRectangle(Brushes.Black, new Rectangle(0, 0, 1 + (TILESIZE + 1) * Width, 1 + (TILESIZE + 1) * Height));
 
-
 			// Dispose of the graphics object
 			g.Dispose();
-            path.Dispose();
+			path.Dispose();
 
 			return bmp;
 		}
 
 
 		/// <summary>
-		/// Returns a textmap of the maze.
+		/// Returns a textmap of the labyrinth.
 		/// </summary>
-		/// <returns>A textual representation of the maze</returns>
+		/// <returns>A textual representation of the labyrinth</returns>
 		public override string ToString()
 		{
 			string representation = string.Empty;
@@ -233,6 +250,7 @@ namespace Labyrinth
 					sb.Append(representation);
 				}
 
+				// Insert the bonus locations in a list
 				if (!hasBeenDisplayed)
 				{
 					SetBonuses(sb, '_');
@@ -245,9 +263,9 @@ namespace Labyrinth
 			// Place the bonuses on the map
 			if (hasBeenDisplayed)
 			{
-				for (int i = _bonuses.Count - 1; i >= 0; --i)
+				for (int i = _bonusPositions.Count - 1; i >= 0; --i)
 				{
-					char[] bonus = _bonuses[i];
+					char[] bonus = _bonusPositions[i];
 					if (sb[bonus[0]].Equals(' '))
 						sb[bonus[0]] = bonus[1];
 					if (sb[bonus[0]].Equals('O'))	// I've gone through the bonus, make it disappear
@@ -255,12 +273,21 @@ namespace Labyrinth
 						char[] newTab = new char[2];
 						newTab[0] = bonus[0];
 						newTab[1] = ' ';
-						_bonuses[_bonuses.IndexOf(bonus)] = newTab;
+						_bonusPositions[_bonusPositions.IndexOf(bonus)] = newTab;
 
 						if (bonus[1].Equals('_'))
-							BonusTorchRemaining += BONUS_STEPS;
+						{
+							BonusTorchRemaining += BONUS_STEPS_TORCH;
+							TotalBonusTorch += BONUS_STEPS_TORCH;
+							++TotalBonusTorchTaken;
+						}
+
 						else if (bonus[1].Equals('.'))
+						{
 							BonusStepsRemaining += BONUS_STEPS;
+							TotalBonusSteps += BONUS_STEPS;
+							++TotalBonusStepsTaken;
+						}
 					}
 				}
 			}
@@ -269,58 +296,18 @@ namespace Labyrinth
 			return sb.ToString();
 		}
 
+		#endregion
+
+		#region Generate
 
 		/// <summary>
-		/// Update the player's position
+		/// Creates a new labyrinth with the current size and starting position
 		/// </summary>
-		/// <param name="pNewPosition">The new position of the player</param>
-		public void MovePlayer(Point pNewPosition)
-		{
-			if (IsInside(pNewPosition) && IsOnPath(pNewPosition) && (!IsWinner || !IsLoser))
-			{
-				CurrentTile = pNewPosition;
-				if (BonusStepsRemaining > 0)
-					--BonusStepsRemaining;
-				else if (StepsRemaining > 0)
-					--StepsRemaining;
-				if (BonusTorchRemaining > 0)
-					--BonusTorchRemaining;
-
-				IsWinner = CurrentTile == FurthestPoint;
-				IsLoser = !IsWinner && StepsRemaining == 0;
-            }
-		}
-
-
-		private void GenerateStartingPosition()
-		{
-            do
-            {
-                CurrentTile = new Point(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
-            } while (CurrentTile.X == 0 || CurrentTile.Y == 0);
-		}
-
-
-		private void SetBonuses(StringBuilder sb, char c)
-		{
-			int index = rand.Next(sb.Length);
-			char[] tab = new char[2];
-			if (sb[index].Equals(' '))
-				sb[index] = c;
-			tab[0] = (char)index;
-			tab[1] = c;
-			_bonuses.Add(tab);
-		}
-
-
-		/// <summary>
-		/// Creates a new maze with the current size and starting position
-		/// </summary>
-		/// <returns>A freshly generated, random maze</returns>
+		/// <returns>A freshly generated, random labyrinth</returns>
 		private byte[,] Generate()
 		{
 			// Local variable to store neighbors to the current square
-			// As we work our way through the maze
+			// As we work our way through the labyrinth
 			List<Point> neighbors;
 
 			// As long as there are still tiles to try
@@ -344,7 +331,7 @@ namespace Labyrinth
 				else
 				{
 					// If there were no neighbors to try, we are at a dead-end
-					// Test to see if this dead end will be the furthest point in the maze
+					// Test to see if this dead end will be the furthest point in the labyrinth
 					UpdateFurthestPoint();
 
 					// Toss this tile out 
@@ -353,6 +340,35 @@ namespace Labyrinth
 			}
 
 			return Labyrinth;
+		}
+
+
+		/// <summary>
+		/// Generate the player's starting position
+		/// </summary>
+		private void GenerateStartingPosition()
+		{
+			do
+			{
+				CurrentTile = new Point(rand.Next(1, Width - 1), rand.Next(1, Height - 1));
+			} while (CurrentTile.X == 0 || CurrentTile.Y == 0);
+		}
+
+
+		/// <summary>
+		/// Insert the bonus locations in the textmap if the map has been generated
+		/// </summary>
+		/// <param name="sb">The map in textmap format</param>
+		/// <param name="c">The character to place place in the textmap</param>
+		private void SetBonuses(StringBuilder sb, char c)
+		{
+			int index = rand.Next(sb.Length);
+			char[] tab = new char[2];
+			if (sb[index].Equals(' '))
+				sb[index] = c;
+			tab[0] = (char)index;
+			tab[1] = c;
+			_bonusPositions.Add(tab);
 		}
 
 
@@ -417,7 +433,7 @@ namespace Labyrinth
 				// Find the neighbor's position
 				Point neighborToCheck = new Point(pPointToCheck.X + offset.X, pPointToCheck.Y + offset.Y);
 
-				// Make sure it is inside the maze, and it hasn't been dug out yet
+				// Make sure it is inside the labyrinth, and it hasn't been dug out yet
 				if (IsInside(neighborToCheck) && Labyrinth[neighborToCheck.X, neighborToCheck.Y] == 1)
 					intactWallCounter++;
 			}
@@ -426,12 +442,39 @@ namespace Labyrinth
 			return intactWallCounter == 3;
 		}
 
+		#endregion
+
+		#region Player Movements
 
 		/// <summary>
-		/// Find out whether a tile is inside the maze
+		/// Update the player's position
+		/// </summary>
+		/// <param name="pNewPosition">The new position of the player</param>
+		public void MovePlayer(Point pNewPosition)
+		{
+			if (IsInside(pNewPosition) && IsOnPath(pNewPosition) && (!IsWinner || !IsLoser))
+			{
+				CurrentTile = pNewPosition;
+				if (BonusStepsRemaining > 0)
+					--BonusStepsRemaining;
+				else if (StepsRemaining > 0)
+					--StepsRemaining;
+				if (BonusTorchRemaining > 0)
+					--BonusTorchRemaining;
+
+				++TotalSteps;
+
+				IsWinner = CurrentTile == FurthestPoint;
+				IsLoser = !IsWinner && StepsRemaining == 0;
+			}
+		}
+
+
+		/// <summary>
+		/// Find out whether a tile is inside the labyrinth
 		/// </summary>
 		/// <param name="pPoint">The coordinates of the tile to check</param>
-		/// <returns>Whether the tile is inside the maze</returns>
+		/// <returns>Whether the tile is inside the labyrinth</returns>
 		private bool IsInside(Point pPoint)
 		{
 			return pPoint.X >= 0 && pPoint.Y >= 0 && pPoint.X < Width && pPoint.Y < Height;
@@ -447,6 +490,8 @@ namespace Labyrinth
 		{
 			return Labyrinth[pPoint.X, pPoint.Y] == 0;
 		}
+
+		#endregion
 
 		#endregion
 	}

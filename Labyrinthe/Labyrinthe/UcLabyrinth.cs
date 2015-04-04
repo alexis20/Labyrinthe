@@ -19,7 +19,7 @@ namespace Labyrinth
 
 		public void Display(LabyrinthManager pLabyrinth)
 		{
-			PbLabyrinth.Image = pLabyrinth.Display();
+			PbLabyrinth.Image = pLabyrinth.GetBitmap();
 			Focus();
 		}
 

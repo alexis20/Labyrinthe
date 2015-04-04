@@ -50,13 +50,13 @@ namespace Labyrinth
 		{
 			if (labyrinth.IsWinner || labyrinth.IsLoser) return;
 
-			if (e.KeyCode == Keys.W)
+			if (e.KeyCode == Keys.W)	// Move up
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X, labyrinth.CurrentTile.Y + 1));
-			else if (e.KeyCode == Keys.A)
+			else if (e.KeyCode == Keys.A)	// Move left
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X - 1, labyrinth.CurrentTile.Y));
-			else if (e.KeyCode == Keys.S)
+			else if (e.KeyCode == Keys.S)	// Move down
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X, labyrinth.CurrentTile.Y - 1));
-			else if (e.KeyCode == Keys.D)
+			else if (e.KeyCode == Keys.D)	// Move right
 				labyrinth.MovePlayer(new Point(labyrinth.CurrentTile.X + 1, labyrinth.CurrentTile.Y));
 
 			UcLabyrinth.Display(labyrinth);
