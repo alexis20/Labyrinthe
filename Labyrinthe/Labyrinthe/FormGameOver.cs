@@ -30,7 +30,7 @@ namespace Labyrinth
 		{
 			InitializeComponent();
 
-			LblTitle.Text = pLabyrinth.IsWinner ? "WINNER !" : "LOSER !";
+			LblTitle.Text = pLabyrinth.IsWinner ? "YOU WIN !" : "YOU LOSE !";
 			TxtTime.Text = (pTime / 60) + ":" + (pTime % 60);
 
 			TxtStepsRemaining.Text = pLabyrinth.StepsRemaining.ToString();

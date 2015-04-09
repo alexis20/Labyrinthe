@@ -100,7 +100,7 @@
 			this.LblTitle.Name = "LblTitle";
 			this.LblTitle.Size = new System.Drawing.Size(345, 30);
 			this.LblTitle.TabIndex = 0;
-			this.LblTitle.Text = "WINNER / LOSER !";
+			this.LblTitle.Text = "YOU WIN / LOSE !";
 			this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// GbSteps

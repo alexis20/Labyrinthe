@@ -41,7 +41,7 @@ namespace Labyrinth
 		/// <summary>
 		/// An enum consisted of the textual representation of the map
 		/// </summary>
-		private enum Text
+		private enum TEXT_ENUM
 		{
 			EXIT = '*', 
 			PLAYER = 'O', 
@@ -188,23 +188,23 @@ namespace Labyrinth
 				{
 					switch (mazeString[x + y * Width])
 					{
-						case (char)Text.WALL:
+						case (char)TEXT_ENUM.WALL:
 							fillBrush = Brushes.Black;
 							break;
-						case (char)Text.PLAYER:
+						case (char)TEXT_ENUM.PLAYER:
 							fillBrush = Brushes.Red;
 							playerCoordinates = new Point(1 + x * (TILESIZE + 1), 1 + y * (TILESIZE + 1));
 							break;
-						case (char)Text.PATH:
+						case (char)TEXT_ENUM.PATH:
 							fillBrush = Brushes.White;
 							break;
-						case (char)Text.EXIT:
+						case (char)TEXT_ENUM.EXIT:
 							fillBrush = Brushes.LightGreen;
 							break;
-						case (char)Text.BONUS_TORCH:
+						case (char)TEXT_ENUM.BONUS_TORCH:
 							fillBrush = Brushes.Gold;
 							break;
-						case (char)Text.BONUS_STEP:
+						case (char)TEXT_ENUM.BONUS_STEP:
 							fillBrush = Brushes.CornflowerBlue;
 							break;
 					}
@@ -251,18 +251,18 @@ namespace Labyrinth
 					{
 						// If it's the current tile, represent it with an "O"
 						if (CurrentTile.X == x && CurrentTile.Y == y)
-							representation = Text.PLAYER.ToString();
+							representation = ((char)TEXT_ENUM.PLAYER).ToString();
 						else
 						{
 							// If it's still one to test
 							if (!_tileToTry.Contains(new Point(x, y)))
-								representation = Text.PATH.ToString(); // Already been there
+								representation = ((char)TEXT_ENUM.PATH).ToString(); // Already been there
 							if (FurthestPoint.X == x && FurthestPoint.Y == y)
-								representation = Text.EXIT.ToString();
+								representation = ((char)TEXT_ENUM.EXIT).ToString();
 						}
 					}
 					else
-						representation = Text.WALL.ToString();  // It is unexcavated (wall)
+						representation = ((char)TEXT_ENUM.WALL).ToString();  // It is unexcavated (wall)
 
 					sb.Append(representation);
 				}
@@ -270,8 +270,8 @@ namespace Labyrinth
 				// Insert the bonus locations in a list
 				if (!hasBeenDisplayed)
 				{
-					SetBonuses(sb, (char)Text.BONUS_TORCH);
-					SetBonuses(sb, (char)Text.BONUS_STEP);
+					SetBonuses(sb, (char)TEXT_ENUM.BONUS_TORCH);
+					SetBonuses(sb, (char)TEXT_ENUM.BONUS_STEP);
 				}
 
 				sb.AppendLine();
@@ -283,23 +283,23 @@ namespace Labyrinth
 				for (int i = _bonusPositions.Count - 1; i >= 0; --i)
 				{
 					char[] bonus = _bonusPositions[i];
-					if (sb[bonus[0]].Equals(Text.PATH))
+					if (sb[bonus[0]].Equals((char)TEXT_ENUM.PATH))
 						sb[bonus[0]] = bonus[1];
-					if (sb[bonus[0]].Equals(Text.PLAYER))	// I've gone through the bonus, make it disappear
+					if (sb[bonus[0]].Equals((char)TEXT_ENUM.PLAYER))	// I've gone through the bonus, make it disappear
 					{
 						char[] newTab = new char[2];
 						newTab[0] = bonus[0];
-						newTab[1] = (char)Text.PATH;
+						newTab[1] = (char)TEXT_ENUM.PATH;
 						_bonusPositions[_bonusPositions.IndexOf(bonus)] = newTab;
 
-						if (bonus[1].Equals(Text.BONUS_TORCH))
+						if (bonus[1].Equals((char)TEXT_ENUM.BONUS_TORCH))
 						{
 							BonusTorchRemaining += BONUS_STEPS_TORCH;
 							TotalBonusTorch += BONUS_STEPS_TORCH;
 							++BonusTorchTaken;
 						}
 
-						else if (bonus[1].Equals(Text.BONUS_STEP))
+						else if (bonus[1].Equals((char)TEXT_ENUM.BONUS_STEP))
 						{
 							BonusStepsRemaining += BONUS_STEPS;
 							TotalBonusSteps += BONUS_STEPS;
@@ -381,7 +381,7 @@ namespace Labyrinth
 		{
 			int index = rand.Next(sb.Length);
 			char[] tab = new char[2];
-			if (sb[index].Equals(Text.PATH))
+			if (sb[index].Equals((char)TEXT_ENUM.PATH))
 				sb[index] = c;
 			tab[0] = (char)index;
 			tab[1] = c;
