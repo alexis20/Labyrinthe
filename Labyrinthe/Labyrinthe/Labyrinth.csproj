@@ -59,49 +59,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormGameOver.cs">
+    <Compile Include="Interfaces\Form\FormGameOver.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGameOver.Designer.cs">
+    <Compile Include="Interfaces\Form\FormGameOver.Designer.cs">
       <DependentUpon>FormGameOver.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLabyrinth.cs">
+    <Compile Include="Interfaces\FormLabyrinth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLabyrinth.Designer.cs">
+    <Compile Include="Interfaces\FormLabyrinth.Designer.cs">
       <DependentUpon>FormLabyrinth.cs</DependentUpon>
     </Compile>
-    <Compile Include="LabyrinthManager.cs" />
+    <Compile Include="Classes\LabyrinthManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UcGestion.cs">
+    <Compile Include="Interfaces\UserControl\UcGestion.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcGestion.Designer.cs">
+    <Compile Include="Interfaces\UserControl\UcGestion.Designer.cs">
       <DependentUpon>UcGestion.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcGestionInformation.cs">
+    <Compile Include="Interfaces\UserControl\UcGestionInformation.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcGestionInformation.Designer.cs">
+    <Compile Include="Interfaces\UserControl\UcGestionInformation.Designer.cs">
       <DependentUpon>UcGestionInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcInformation.cs">
+    <Compile Include="Interfaces\UserControl\UcInformation.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcInformation.Designer.cs">
+    <Compile Include="Interfaces\UserControl\UcInformation.Designer.cs">
       <DependentUpon>UcInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcLabyrinth.cs">
+    <Compile Include="Interfaces\UserControl\UcLabyrinth.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcLabyrinth.Designer.cs">
+    <Compile Include="Interfaces\UserControl\UcLabyrinth.Designer.cs">
       <DependentUpon>UcLabyrinth.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormGameOver.resx">
+    <EmbeddedResource Include="Interfaces\Form\FormGameOver.resx">
       <DependentUpon>FormGameOver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLabyrinth.resx">
+    <EmbeddedResource Include="Interfaces\FormLabyrinth.resx">
       <DependentUpon>FormLabyrinth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,16 +114,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UcGestion.resx">
+    <EmbeddedResource Include="Interfaces\UserControl\UcGestion.resx">
       <DependentUpon>UcGestion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UcGestionInformation.resx">
+    <EmbeddedResource Include="Interfaces\UserControl\UcGestionInformation.resx">
       <DependentUpon>UcGestionInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UcInformation.resx">
+    <EmbeddedResource Include="Interfaces\UserControl\UcInformation.resx">
       <DependentUpon>UcInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UcLabyrinth.resx">
+    <EmbeddedResource Include="Interfaces\UserControl\UcLabyrinth.resx">
       <DependentUpon>UcLabyrinth.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
